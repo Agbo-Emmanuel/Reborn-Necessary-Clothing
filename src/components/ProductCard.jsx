@@ -48,15 +48,20 @@ const ProductCard = () => {
 
   return (
     <>
-        <div className='product_card_body'>
-            <div className='product_card_image_container'>
-                <img src='' alt=''/>
-            </div>
-            <div className='product_card_text_container'>
-                <p>21WN reversible angora cardigan</p>
-                <h6>$120</h6>
-            </div>
-        </div>
+
+        {
+            products.map((e)=>(
+                <div className='product_card_body'>
+                    <div className='product_card_image_container'>
+                        <img src={e.image} alt=''/>
+                    </div>
+                    <div className='product_card_text_container'>
+                        <p>{e.name}</p>
+                        <h6>{e.price}</h6>
+                    </div>
+                </div>
+            ))
+        }
     </>
   )
 }

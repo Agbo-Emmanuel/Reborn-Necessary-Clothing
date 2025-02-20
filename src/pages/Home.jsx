@@ -1,6 +1,6 @@
 import React from 'react'
 import './pagesCss/home.css'
-import ProductCard from '../components/productCard'
+import ProductCard from '../components/ProductCard'
 
 const Home = () => {
   return (
@@ -17,13 +17,6 @@ const Home = () => {
           <h3>NEW ARRIVAL</h3>
          </div>
           <div className='section_one_product_container'>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
             <ProductCard/>
           </div>
         </div>
