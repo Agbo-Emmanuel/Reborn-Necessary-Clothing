@@ -61,7 +61,7 @@ const Home = () => {
                 key={item.id}
                 className="hero_slide"
                 style={{
-                  backgroundImage: `linear-gradient(270deg, #00000070, #00000070, #00000070), url(${item.image})`,
+                  backgroundImage: `linear-gradient(270deg, #0000005e, #0000005e, #0000005e), url(${item.image})`,
                   backgroundRepeat: 'no-repeat',
                   backgroundSize: 'cover',
                   backgroundPosition: 'flex-end flex-end',
