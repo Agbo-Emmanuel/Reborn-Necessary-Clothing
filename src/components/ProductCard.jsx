@@ -9,7 +9,7 @@ import product_image6 from '../assets/product_image6.jpg'
 import product_image7 from '../assets/product_image7.jpg'
 import product_image8 from '../assets/product_image8.jpg'
 
-const ProductCard = () => {
+const ProductCard = ({limit}) => {
 
     const products = [
         {
@@ -54,18 +54,20 @@ const ProductCard = () => {
         },
     ]
 
+    const productsToDisplay = limit ? products.slice(0,limit) : products;
+
   return (
     <>
 
         {
-            products.map((e)=>(
+            productsToDisplay.map((e)=>(
                 <div className='product_card_body'>
                     <div className='product_card_image_container'>
                         <img src={e.image} alt=''/>
                     </div>
                     <div className='product_card_text_container'>
                         <p>{e.name}</p>
-                        <h6>{e.price}</h6>
+                        {/* <h6>{e.price}</h6> */}
                     </div>
                 </div>
             ))

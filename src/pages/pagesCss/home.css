@@ -103,7 +103,6 @@
     flex-wrap: wrap;
     gap: 24px;
     margin-top: 30px;
-    justify-content: center;
 }
 
 .section_one_explore_container{
@@ -254,4 +253,100 @@
   
 .play_button:hover {
     background: rgba(0, 0, 0, 0.8);
+}
+
+.section_four{
+    width: 100%;
+    height: max-content;
+    padding: 50px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.section_four h3{
+    width: max-content;
+    height: max-content;
+    color: #fff;
+    font-size: 20px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 400;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section_four h3:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    width: 50%;
+    height: 2px;
+    background-color: lightgrey;
+}
+
+.section_four_product_container{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.section_five{
+    width: 100%;
+    height: max-content;
+    padding: 50px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.section_five p{
+    width: 40%;
+    color: #E0CFBA;
+    font-size: 18px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 400;
+    text-align: center;
+    line-height: 26px;
+}
+
+.section_five_middle_container{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 70px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.section_five_middle_item_container{
+    width: 12%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section_five_middle_item_container img{
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    /* background-color: red; */
+}
+
+.section_five_middle_item_container p{
+    width: 100%;
+    padding: 4px;
+    color: #E0CFBA;
+    font-size: 14px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 400;
+    text-align: center;
+    line-height: 20px;
 }

@@ -4,8 +4,18 @@ import ProductCard from '../components/ProductCard'
 import hero_section_image_one from '../assets/hero_section_image_one.jpg';
 import hero_section_image_two from '../assets/hero_section_image_two.jpg';
 import hero_section_image_three from '../assets/hero_section_image_three.jpg';
+import hero_section_image_four from '../assets/hero_section_image_four.jpg';
+import hero_section_image_five from '../assets/hero_section_image_five.jpg';
+import hero_section_image_six from '../assets/hero_section_image_six.jpg';
+import hero_section_image_seven from '../assets/hero_section_image_seven.jpg';
+import hero_section_image_eight from '../assets/hero_section_image_eight.jpg';
 import { MdOutlineArrowForward } from "react-icons/md";
 import section_three_video from '../assets/section_three_video.mp4'
+import miroodles_sticker from '../assets/miroodles_sticker.png'
+import miroodles_sticker2 from '../assets/miroodles_sticker2.png'
+import miroodles_sticker3 from '../assets/miroodles_sticker3.png'
+import miroodles_sticker4 from '../assets/miroodles_sticker4.png'
+
 
 const Home = () => {
 
@@ -26,7 +36,32 @@ const Home = () => {
       id: 3,
       image: hero_section_image_three,
       text: "Professional Portfolio Management",
-    }
+    },
+    {
+      id: 4,
+      image: hero_section_image_four,
+      text: "Professional Portfolio Management",
+    },
+    {
+      id: 5,
+      image: hero_section_image_five,
+      text: "Professional Portfolio Management",
+    },
+    {
+      id: 6,
+      image: hero_section_image_six,
+      text: "Professional Portfolio Management",
+    },
+    {
+      id: 7,
+      image: hero_section_image_seven,
+      text: "Professional Portfolio Management",
+    },
+    {
+      id: 8,
+      image: hero_section_image_eight,
+      text: "Professional Portfolio Management",
+    },
   ];
 
   useEffect(()=>{
@@ -79,7 +114,7 @@ const Home = () => {
           <h3>NEW ARRIVAL</h3>
          </div>
           <div className='section_one_product_container'>
-            <ProductCard/>
+            <ProductCard limit={8}/>
           </div>
           <div className='section_one_explore_container'>
             <button>
@@ -110,6 +145,33 @@ const Home = () => {
               ▶
             </button>
           )}
+        </div>
+        <div className='section_four'>
+          <h3>JUST FOR YOU</h3>
+          <div className='section_four_product_container'>
+            <ProductCard limit={4}/>
+          </div>
+        </div>
+        <div className='section_five'>
+          <p>Making a luxurious lifestyle accessible for a generous group of women is our daily drive.</p>
+          <div className='section_five_middle_container'>
+            <div className='section_five_middle_item_container'>
+              <img src={miroodles_sticker} alt=''/>
+              <p>Fast shipping. Free on orders over $25.</p>
+            </div>
+            <div className='section_five_middle_item_container'>
+              <img src={miroodles_sticker2} alt=''/>
+              <p>Sustainable process from start to finish.</p>
+            </div>
+            <div className='section_five_middle_item_container'>
+              <img src={miroodles_sticker3} alt=''/>
+              <p>Unique designs and high-quality materials.</p>
+            </div>
+            <div className='section_five_middle_item_container'>
+              <img src={miroodles_sticker4} alt=''/>
+              <p>Fast shipping. Free on orders over $25.</p>
+            </div>
+          </div>
         </div>
       </div>
     </>
