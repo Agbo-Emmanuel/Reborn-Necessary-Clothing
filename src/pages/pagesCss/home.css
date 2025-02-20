@@ -4,22 +4,37 @@
 }
 
 .hero_section{
+    position: relative;
     width: 100%;
-    height: 90vh;
-    /* background-color: red; */
+    height: 100vh;
+    background-color: red;
     display: flex;
     align-items: center;
-    padding-left: 200px;
-    background: linear-gradient(270deg, #000000c5, #000000c5, #000000c5), url("../../assets/hero_section_image_three.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: flex-end center;
-    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.hero_background_slider{
+    display: flex;
+    width: 300%; /* 100% * number of slides */
+    height: 100%;
+    transition: transform 1s ease-in-out;
+    /* position: absolute;
+    top: 0; */
+}
+
+.hero_slide{
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
 }
 
 .hero_section_text_container{
     width: max-content;
     height: max-content;
+    position: absolute;
+    z-index: 2;
+    left: 120px;
+    top: 140px;
 }
 
 .hero_section_text_container h1{

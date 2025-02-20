@@ -1,12 +1,63 @@
-import React from 'react'
+import { useEffect, useState } from 'react';
 import './pagesCss/home.css'
 import ProductCard from '../components/ProductCard'
+import hero_section_image_one from '../assets/hero_section_image_one.jpg';
+import hero_section_image_two from '../assets/hero_section_image_two.jpg';
+import hero_section_image_three from '../assets/hero_section_image_three.jpg';
 
 const Home = () => {
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const Context = [
+    {
+      id: 1,
+      image: hero_section_image_one,
+      text: 'A Philosophy Rooted In The Pursuit Of Alpha',
+    },
+    {
+      id: 2,
+      image: hero_section_image_two,
+      text: "Your Future Is Created By What You Do Today",
+    },
+    {
+      id: 3,
+      image: hero_section_image_three,
+      text: "Professional Portfolio Management",
+    }
+  ];
+
+  useEffect(()=>{
+    const interval = setInterval(() => {
+      setCurrentSlide(currentSlide => (currentSlide + 1) % Context.length);
+    }, 4000); 
+
+    return () => clearInterval(interval); 
+  },[Context.length])
+
   return (
     <>
       <div className='home_body'>
         <div className='hero_section'>
+          <div
+            className="hero_background_slider"
+            style={{
+              transform: `translateX(-${currentSlide * 100}%)`, // Slide effect
+            }}
+          >
+            {Context.map((item, index) => (
+              <div
+                key={item.id}
+                className="hero_slide"
+                style={{
+                  backgroundImage: `linear-gradient(270deg, #000000c5, #000000c5, #000000c5), url(${item.image})`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'flex-end flex-end',
+                }}
+              ></div>
+            ))}
+          </div>
           <div className='hero_section_text_container'>
             <h1>Luxury<br/>Fashion<br/>& Accessories</h1>
             <button>Explore Collection</button>
