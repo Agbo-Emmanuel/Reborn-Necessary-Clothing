@@ -4,6 +4,7 @@ import ProductCard from '../components/ProductCard'
 import hero_section_image_one from '../assets/hero_section_image_one.jpg';
 import hero_section_image_two from '../assets/hero_section_image_two.jpg';
 import hero_section_image_three from '../assets/hero_section_image_three.jpg';
+import { MdOutlineArrowForward } from "react-icons/md";
 
 const Home = () => {
 
@@ -69,6 +70,25 @@ const Home = () => {
          </div>
           <div className='section_one_product_container'>
             <ProductCard/>
+          </div>
+          <div className='section_one_explore_container'>
+            <button>
+              Explore More
+              <MdOutlineArrowForward/>
+            </button>
+          </div>
+        </div>
+        <div className='section_two'>
+          <div className='section_two_collection_container'>
+            <div className='section_two_writeup_container_one'>
+              <h3>Autumn</h3>
+              <p>Collection</p>
+            </div>
+            <div className='section_two_writeup_container_two'>
+              <h3>October</h3>
+              <p>Collection</p>
+            </div>
+            <h1>10</h1>
           </div>
         </div>
       </div>
