@@ -1,18 +1,19 @@
 .product_card_body{
-    width: 20%;
+    width: 23%;
     height: max-content;
 }
 
 .product_card_image_container{
     width: 100%;
-    height: 240px;
+    height: 300px;
     /* background-color: red; */
 }
 
 .product_card_image_container img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
+    object-position: flex-end center;
 }
 
 .product_card_text_container{
