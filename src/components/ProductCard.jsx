@@ -4,6 +4,10 @@ import product_image1 from '../assets/product_image1.jpg'
 import product_image2 from '../assets/product_image2.jpg'
 import product_image3 from '../assets/product_image3.jpg'
 import product_image4 from '../assets/product_image4.jpg'
+import product_image5 from '../assets/product_image5.jpg'
+import product_image6 from '../assets/product_image6.jpg'
+import product_image7 from '../assets/product_image7.jpg'
+import product_image8 from '../assets/product_image8.jpg'
 
 const ProductCard = () => {
 
@@ -29,22 +33,22 @@ const ProductCard = () => {
             price: "$120",
         },
         {
-            image: product_image2,
+            image: product_image5,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
-            image: product_image4,
+            image: product_image6,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
-            image: product_image3,
+            image: product_image7,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
-            image: product_image1,
+            image: product_image8,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },

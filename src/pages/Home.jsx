@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './pagesCss/home.css'
 import ProductCard from '../components/ProductCard'
 import hero_section_image_one from '../assets/hero_section_image_one.jpg';
 import hero_section_image_two from '../assets/hero_section_image_two.jpg';
 import hero_section_image_three from '../assets/hero_section_image_three.jpg';
 import { MdOutlineArrowForward } from "react-icons/md";
+import section_three_video from '../assets/section_three_video.mp4'
 
 const Home = () => {
 
@@ -36,6 +37,15 @@ const Home = () => {
     return () => clearInterval(interval); 
   },[Context.length])
 
+
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const handlePlay = () => {
+    videoRef.current.play();
+    setIsPlaying(true);
+  };
+
   return (
     <>
       <div className='home_body'>
@@ -51,7 +61,7 @@ const Home = () => {
                 key={item.id}
                 className="hero_slide"
                 style={{
-                  backgroundImage: `linear-gradient(270deg, #000000c5, #000000c5, #000000c5), url(${item.image})`,
+                  backgroundImage: `linear-gradient(270deg, #00000070, #00000070, #00000070), url(${item.image})`,
                   backgroundRepeat: 'no-repeat',
                   backgroundSize: 'cover',
                   backgroundPosition: 'flex-end flex-end',
@@ -90,6 +100,16 @@ const Home = () => {
             </div>
             <h1>10</h1>
           </div>
+        </div>
+        <div className='section_three'>
+          <video ref={videoRef} onPause={() => setIsPlaying(false)} width="100%" className='section_three_video_container'>
+           <source src={section_three_video} type="video/mp4"/>
+          </video>
+          {!isPlaying && (
+            <button className="play_button" onClick={handlePlay}>
+              ▶
+            </button>
+          )}
         </div>
       </div>
     </>

@@ -7,7 +7,7 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -216,4 +216,42 @@
     position: absolute;
     top: 32%;
     right: 140px;
+}
+
+.section_three{
+    width: 100%;
+    height: 700px;
+    padding: 50px 160px;
+    position: relative;
+}
+
+.section_three_video_container{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.play_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+  }
+  
+.play_button:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
