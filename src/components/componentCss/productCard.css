@@ -1,0 +1,40 @@
+.product_card_body{
+    width: 20%;
+    height: max-content;
+}
+
+.product_card_image_container{
+    width: 100%;
+    height: 240px;
+    background-color: red;
+}
+
+.product_card_image_container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product_card_text_container{
+    width: 100%;
+    height: max-content;
+    padding: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.product_card_text_container p{
+    color: #DEDEDE;
+    font-size: 16px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 400;
+}
+
+.product_card_text_container h6{
+    color: #DD8560;
+    font-size: 17px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 500;
+}

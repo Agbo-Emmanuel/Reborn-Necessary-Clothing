@@ -2,3 +2,91 @@
     width: 100%;
     height: max-content;
 }
+
+.hero_section{
+    width: 100%;
+    height: 90vh;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    padding-left: 200px;
+    background: linear-gradient(270deg, #000000c5, #000000c5, #000000c5), url("../../assets/hero_section_image_three.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: flex-end center;
+    background-attachment: fixed;
+}
+
+.hero_section_text_container{
+    width: max-content;
+    height: max-content;
+}
+
+.hero_section_text_container h1{
+    color: #F9EFEF;
+    font-size: 38px;
+    font-family: "Bodoni Moda", serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.hero_section_text_container button{
+    width: max-content;
+    height: max-content;
+    padding: 12px 40px;
+    border-radius: 100px;
+    background-color: #979797;
+    color: #000;
+    font-size: 16px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 400;
+    border: none;
+    margin-top: 26px;
+    cursor: pointer;
+}
+
+.section_one{
+    width: 100%;
+    padding: 60px 80px;
+}
+
+.section_one_text_container{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section_one_text_container h3{
+    width: max-content;
+    height: max-content;
+    color: #fff;
+    font-size: 20px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 400;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section_one_text_container h3:after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    width: 50%;
+    height: 2px;
+    background-color: lightgrey;
+}
+
+.section_one_product_container{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 30px;
+    justify-content: center;
+}
