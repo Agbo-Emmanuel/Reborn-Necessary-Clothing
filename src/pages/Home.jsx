@@ -93,7 +93,8 @@ const Home = () => {
         </div>
         <div className='section_one'>
          <div className='section_one_text_container'>
-          <h3>NEW ARRIVAL</h3>
+          <h3>Designer Mood</h3>
+          <p>Designed, Made & Styled!</p>
          </div>
           <div className='section_one_product_container'>
             <ProductCard limit={8}/>

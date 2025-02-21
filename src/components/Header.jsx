@@ -13,9 +13,9 @@ const Header = () => {
           <img src={rbnc_logo} alt=''/>
         </div>
         <div className='header_nav_container'>
-          <Link className='header_nav'>New Arrivals</Link>
-          <Link className='header_nav'>Women</Link>
-          <Link className='header_nav'>Men</Link>
+          <Link className='header_nav'>Designer Mood</Link>
+          <Link className='header_nav'>For Her</Link>
+          <Link className='header_nav'>For Him</Link>
           <Link className='header_nav'>Accessories</Link>
         </div>
         <div className='header_account_container'>

@@ -78,7 +78,7 @@
     width: max-content;
     height: max-content;
     color: #fff;
-    font-size: 20px;
+    font-size: 28px;
     font-family: "Tenor Sans", serif;
     font-weight: 400;
     text-align: center;
@@ -92,8 +92,19 @@
     bottom: 0;
     right: 50%;
     width: 50%;
-    height: 2px;
+    height: 3px;
     background-color: lightgrey;
+}
+
+.section_one_text_container p{
+    width: max-content;
+    height: max-content;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 16px;
 }
 
 .section_one_product_container{
@@ -301,7 +312,7 @@
     bottom: 0;
     right: 50%;
     width: 50%;
-    height: 2px;
+    height: 3px;
     background-color: lightgrey;
 }
 
