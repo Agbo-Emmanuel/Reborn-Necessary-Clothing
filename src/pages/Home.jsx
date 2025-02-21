@@ -2,8 +2,6 @@ import { useEffect, useState, useRef } from 'react';
 import './pagesCss/home.css'
 import ProductCard from '../components/ProductCard'
 import hero_section_image_one from '../assets/hero_section_image_one.jpg';
-import hero_section_image_two from '../assets/hero_section_image_two.jpg';
-import hero_section_image_four from '../assets/hero_section_image_four.jpg';
 import hero_section_image_five from '../assets/hero_section_image_five.jpg';
 import hero_section_image_seven from '../assets/hero_section_image_seven.jpg';
 import { MdOutlineArrowForward } from "react-icons/md";
@@ -13,6 +11,7 @@ import miroodles_sticker2 from '../assets/miroodles_sticker2.png'
 import miroodles_sticker3 from '../assets/miroodles_sticker3.png'
 import miroodles_sticker4 from '../assets/miroodles_sticker4.png'
 import section_five_bottom_image from '../assets/section_five_bottom_image.png'
+import rbnc_logo from '../assets/rbnc_logo.png'
 
 
 const Home = () => {
@@ -109,7 +108,7 @@ const Home = () => {
         <div className='section_two'>
           <div className='section_two_collection_container'>
             <div className='section_two_writeup_container_one'>
-              <h3>Autumn</h3>
+              <img src={rbnc_logo} alt='img'/>
               <p>Collection</p>
             </div>
             <div className='section_two_writeup_container_two'>

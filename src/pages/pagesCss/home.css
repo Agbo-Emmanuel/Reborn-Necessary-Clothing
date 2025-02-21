@@ -172,6 +172,12 @@
     right: 140px;
 }
 
+.section_two_writeup_container_one img{
+    width: 160px;
+    height: 100px;
+    object-fit: cover;
+}
+
 .section_two_writeup_container_one h3, .section_two_writeup_container_two h3{
     height: max-content;
     font-size: 50px;
