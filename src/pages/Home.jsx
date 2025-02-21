@@ -3,12 +3,9 @@ import './pagesCss/home.css'
 import ProductCard from '../components/ProductCard'
 import hero_section_image_one from '../assets/hero_section_image_one.jpg';
 import hero_section_image_two from '../assets/hero_section_image_two.jpg';
-import hero_section_image_three from '../assets/hero_section_image_three.jpg';
 import hero_section_image_four from '../assets/hero_section_image_four.jpg';
 import hero_section_image_five from '../assets/hero_section_image_five.jpg';
-import hero_section_image_six from '../assets/hero_section_image_six.jpg';
 import hero_section_image_seven from '../assets/hero_section_image_seven.jpg';
-import hero_section_image_eight from '../assets/hero_section_image_eight.jpg';
 import { MdOutlineArrowForward } from "react-icons/md";
 import section_three_video from '../assets/section_three_video.mp4'
 import miroodles_sticker from '../assets/miroodles_sticker.png'
@@ -34,11 +31,6 @@ const Home = () => {
       text: "Your Future Is Created By What You Do Today",
     },
     {
-      id: 3,
-      image: hero_section_image_three,
-      text: "Professional Portfolio Management",
-    },
-    {
       id: 4,
       image: hero_section_image_four,
       text: "Professional Portfolio Management",
@@ -49,18 +41,8 @@ const Home = () => {
       text: "Professional Portfolio Management",
     },
     {
-      id: 6,
-      image: hero_section_image_six,
-      text: "Professional Portfolio Management",
-    },
-    {
       id: 7,
       image: hero_section_image_seven,
-      text: "Professional Portfolio Management",
-    },
-    {
-      id: 8,
-      image: hero_section_image_eight,
       text: "Professional Portfolio Management",
     },
   ];
@@ -100,7 +82,7 @@ const Home = () => {
                   backgroundImage: `linear-gradient(270deg, #0000005e, #0000005e, #0000005e), url(${item.image})`,
                   backgroundRepeat: 'no-repeat',
                   backgroundSize: 'cover',
-                  backgroundPosition: 'flex-end flex-end',
+                  backgroundPosition: 'flex-end center',
                 }}
               ></div>
             ))}
@@ -150,7 +132,7 @@ const Home = () => {
         <div className='section_four'>
           <h3>JUST FOR YOU</h3>
           <div className='section_four_product_container'>
-            <ProductCard limit={4}/>
+            <ProductCard showLastFour = {true}/>
           </div>
         </div>
         <div className='section_five'>
@@ -177,6 +159,9 @@ const Home = () => {
             <img src={section_five_bottom_image} alt=''/>
           </div>
         </div>
+        {/* <div className='section_six'>
+          <img src={hero_section_image_three} alt=''/>
+        </div> */}
       </div>
     </>
   )

@@ -7,9 +7,9 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(195, 195, 195, 0.076);
-    position: sticky;
+    /* position: sticky;
     top: 0;
-    z-index: 9999999999;
+    z-index: 9999999999; */
 }
 
 .header_logo_container{
