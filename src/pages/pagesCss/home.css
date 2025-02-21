@@ -6,7 +6,7 @@
 .hero_section{
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 120vh;
     /* background-color: red; */
     display: flex;
     align-items: center;
@@ -34,7 +34,8 @@
     position: absolute;
     z-index: 2;
     left: 120px;
-    top: 140px;
+    top: 0;
+    transform: translateY(50%);
 }
 
 .hero_section_text_container h1{
@@ -418,7 +419,7 @@
 @media screen and (max-width: 768px){
 
     .hero_section{
-        height: 80vh;
+        height: 70vh;
     }
 
     .hero_slide{
@@ -427,7 +428,6 @@
 
     .hero_section_text_container{
         left: 20px;
-        top: 100px;
     }
 
     .section_one{
@@ -436,14 +436,20 @@
 
     .section_one_product_container{
         justify-content: center;
+        /* padding: 0px 40px; */
+    }
+
+    .section_one_explore_container button{
+        font-size: 22px;
+        margin-top: 20px;
     }
 
     .section_two{
-        padding: 50px 16px;
+        padding: 20px 16px;
     }
 
     .section_two_collection_container{
-        height: 60vh;
+        height: 50vh;
         background-position: center flex-end;
     }
 
@@ -479,6 +485,42 @@
 
     .section_four_product_container{
         gap: 0px;
+    }
+
+    .slider_wrapper{
+        width: 100%;
+        gap: 0px;
+    }
+
+    .section_five{
+        padding: 20px 16px;
+        gap: 20px;
+    }
+
+    .section_five p{
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .section_five_middle_container{
+        gap: 30px;
+    }
+
+    .section_five_middle_item_container{
+        width: 42%;
+    }
+
+    .section_five_middle_item_container img{
+        height: 60px;
+    }
+    
+    .section_five_middle_item_container p{
+        line-height: 24px;
+    }
+
+    .section_five_bottom_container{
+        width: 140px;
+        height: 140px;
     }
 
 }

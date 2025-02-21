@@ -21,6 +21,8 @@ const Home = () => {
   const [slidesPerView, setSlidesPerView] = useState(4);
   const [show, setShow] = useState(0);
   const sliderRef = useRef(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const Context = [
     {
@@ -60,38 +62,36 @@ const Home = () => {
 
   useEffect(() => {
     const updateSlidesPerView = () => {
+      let newSlidesPerView = 4;
       if (window.innerWidth <= 768) {
-        setSlidesPerView(1); // Mobile: Show 1 item
+        newSlidesPerView = 1; 
       } else if (window.innerWidth <= 1024) {
-        setSlidesPerView(2); // Tablet: Show 2 items
-      } else {
-        setSlidesPerView(4); // Desktop: Show 4 items
+        newSlidesPerView = 2;
       }
+      setSlidesPerView(newSlidesPerView);
+      setCurrentProductSlide(0); // Reset slide position
     };
-
+  
     updateSlidesPerView();
     window.addEventListener('resize', updateSlidesPerView);
-
-    return () => {
-      window.removeEventListener('resize', updateSlidesPerView);
-    };
+    return () => window.removeEventListener('resize', updateSlidesPerView);
   }, []);
 
-  useEffect(()=>{
-    slidesPerView == 1 ? setShow(7) : setShow(5)
-  },[slidesPerView])
-
-  useEffect(()=>{
-    const interval = setInterval(() => {
-      setCurrentProductSlide(currentProductSlide => (currentProductSlide + 1) % show);
-    }, 4000); 
-
-    return () => clearInterval(interval); 
-  },[show])
+  useEffect(() => {
+    setShow(slidesPerView === 1 ? 7 : 5);
+  }, [slidesPerView]);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentProductSlide((prev) => (prev + 1) % show);
+    }, 4000);
+  
+    return () => clearInterval(interval);
+  }, [show]);
+  
+  useEffect(() => {
     if (sliderRef.current) {
-      const slideWidth = 100 / slidesPerView; // Adjust width based on slidesPerView
+      const slideWidth = 100 / slidesPerView;
       sliderRef.current.style.transform = `translateX(-${currentProductSlide * slideWidth}%)`;
     }
   }, [currentProductSlide, slidesPerView]);
@@ -104,6 +104,29 @@ const Home = () => {
     videoRef.current.play();
     setIsPlaying(true);
   };
+
+  // Touch event handlers for swiping
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchStartX.current - touchEndX.current;
+    const swipeThreshold = 50; // Minimum swipe distance
+
+    if (swipeDistance > swipeThreshold) {
+      // Swipe Left → Next Slide
+      setCurrentProductSlide((prev) => Math.min(prev + 1, show - 1));
+    } else if (swipeDistance < -swipeThreshold) {
+      // Swipe Right → Previous Slide
+      setCurrentProductSlide((prev) => Math.max(prev - 1, 0));
+    }
+  };
+
 
   return (
     <>
@@ -174,8 +197,14 @@ const Home = () => {
         <div className='section_four'>
           <h3>JUST FOR YOU</h3>
           <div className='section_four_product_container'>
-            <div className='slider_wrapper' ref={sliderRef}>
-              <ProductCard showLastFour = {true}/>
+            <div 
+              className='slider_wrapper' 
+              ref={sliderRef}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}  
+            >
+              <ProductCard showLastFour = {7}/>
             </div>
           </div>
         </div>

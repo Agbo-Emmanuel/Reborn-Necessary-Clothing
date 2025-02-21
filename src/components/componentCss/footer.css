@@ -40,3 +40,26 @@
     font-family: "Tenor Sans", sans-serif;
     font-weight: 400;
 }
+
+
+
+@media screen and (max-width: 768px){
+
+    .footer_body{
+        padding: 50px 16px;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .footer_link_container{
+        width: 100%;
+        height: max-content;
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
