@@ -62,7 +62,7 @@
 
     .product_card_image_container{
         height: 280px;
-        width: 90%;
+        width: 96%;
     }
 
     .product_card_image_container img{
@@ -71,7 +71,7 @@
     }
 
     .product_card_text_container{
-        width: 90%;
+        width: 96%;
     }
 
     .product_card_text_container p{
