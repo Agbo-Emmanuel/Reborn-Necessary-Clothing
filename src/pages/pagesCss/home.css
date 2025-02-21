@@ -350,3 +350,14 @@
     text-align: center;
     line-height: 20px;
 }
+
+.section_five_bottom_container{
+    width: 100px;
+    height: 100px;
+}
+
+.section_five_bottom_container img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

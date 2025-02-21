@@ -15,6 +15,7 @@ import miroodles_sticker from '../assets/miroodles_sticker.png'
 import miroodles_sticker2 from '../assets/miroodles_sticker2.png'
 import miroodles_sticker3 from '../assets/miroodles_sticker3.png'
 import miroodles_sticker4 from '../assets/miroodles_sticker4.png'
+import section_five_bottom_image from '../assets/section_five_bottom_image.png'
 
 
 const Home = () => {
@@ -171,6 +172,9 @@ const Home = () => {
               <img src={miroodles_sticker4} alt=''/>
               <p>Fast shipping. Free on orders over $25.</p>
             </div>
+          </div>
+          <div className='section_five_bottom_container'>
+            <img src={section_five_bottom_image} alt=''/>
           </div>
         </div>
       </div>
