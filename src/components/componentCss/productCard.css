@@ -7,7 +7,7 @@
 .product_card_image_container{
     width: 100%;
     height: 320px;
-    /* background-color: red; */
+    background-color: red;
 }
 
 .product_card_image_container img{
@@ -39,4 +39,29 @@
     font-size: 17px;
     font-family: "Tenor Sans", serif;
     font-weight: 500;
+}
+
+
+
+@media screen and (max-width: 768px){
+
+    .product_card_body{
+        width: 100%;
+    }
+
+    .product_card_image_container{
+        height: 500px;
+    }
+
+    .product_card_image_container img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .product_card_text_container p{
+        font-size: 20px;
+    }
+
 }

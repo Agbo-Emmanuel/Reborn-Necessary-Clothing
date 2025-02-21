@@ -18,6 +18,9 @@ const Home = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentProductSlide, setCurrentProductSlide] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(4);
+  const [show, setShow] = useState(0);
+  const sliderRef = useRef(null);
 
   const Context = [
     {
@@ -55,13 +58,43 @@ const Home = () => {
     return () => clearInterval(interval); 
   },[Context.length])
 
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      if (window.innerWidth <= 768) {
+        setSlidesPerView(1); // Mobile: Show 1 item
+      } else if (window.innerWidth <= 1024) {
+        setSlidesPerView(2); // Tablet: Show 2 items
+      } else {
+        setSlidesPerView(4); // Desktop: Show 4 items
+      }
+    };
+
+    updateSlidesPerView();
+    window.addEventListener('resize', updateSlidesPerView);
+
+    return () => {
+      window.removeEventListener('resize', updateSlidesPerView);
+    };
+  }, []);
+
+  useEffect(()=>{
+    slidesPerView == 1 ? setShow(7) : setShow(5)
+  },[slidesPerView])
+
   useEffect(()=>{
     const interval = setInterval(() => {
-      setCurrentProductSlide(currentProductSlide => (currentProductSlide + 1) % 5);
+      setCurrentProductSlide(currentProductSlide => (currentProductSlide + 1) % show);
     }, 4000); 
 
     return () => clearInterval(interval); 
-  },[5])
+  },[show])
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      const slideWidth = 100 / slidesPerView; // Adjust width based on slidesPerView
+      sliderRef.current.style.transform = `translateX(-${currentProductSlide * slideWidth}%)`;
+    }
+  }, [currentProductSlide, slidesPerView]);
 
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -141,11 +174,7 @@ const Home = () => {
         <div className='section_four'>
           <h3>JUST FOR YOU</h3>
           <div className='section_four_product_container'>
-            <div className='slider_wrapper' 
-              style={{
-                transform: `translateX(-${currentProductSlide * 25}%)`, // Slide effect
-              }}
-            >
+            <div className='slider_wrapper' ref={sliderRef}>
               <ProductCard showLastFour = {true}/>
             </div>
           </div>

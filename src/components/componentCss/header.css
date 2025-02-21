@@ -7,9 +7,9 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(195, 195, 195, 0.076);
-    /* position: sticky;
+    position: sticky;
     top: 0;
-    z-index: 9999999999; */
+    z-index: 9999999999;
 }
 
 .header_logo_container{
@@ -48,4 +48,39 @@
     gap: 20px;
     font-size: 24px;
     color: #ebebeb;
+}
+
+.menu_icon{
+    display: none;
+}
+
+
+
+@media screen and (max-width: 768px){
+
+    .header_nav_container{
+        display: none;
+    }
+
+    .cart_icon{
+        display: none;
+    }
+    
+    .header_logo_container{
+        width: 100px;
+        height: 60px;
+    }
+
+    .header_body{
+        padding: 20px 16px;
+    }
+
+    .header_account_container{
+        font-size: 30px;
+    }
+
+    .menu_icon{
+        display: flex;
+    }
+
 }

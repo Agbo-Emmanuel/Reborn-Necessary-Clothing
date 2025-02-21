@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './componentCss/header.css'
 import rbnc_logo from '../assets/rbnc_logo.png'
 import { Link } from 'react-router-dom'
-import { IoSearchOutline } from "react-icons/io5";
+import { IoSearchOutline, IoMenu, IoClose } from "react-icons/io5";
 import { MdOutlineShoppingBag } from "react-icons/md";
 
 const Header = () => {
+
+  const [showMenu, setShowMenu] = useState(false)
+
   return (
     <>
       <div className='header_body'>
@@ -20,7 +23,12 @@ const Header = () => {
         </div>
         <div className='header_account_container'>
           <IoSearchOutline cursor="pointer"/>
-          <MdOutlineShoppingBag cursor="pointer"/>
+          <MdOutlineShoppingBag className='cart_icon' cursor="pointer"/>
+          {
+            showMenu == true ? 
+              <IoClose onClick={()=>setShowMenu(false)} className='menu_icon' cursor="pointer"/> : 
+              <IoMenu onClick={()=>setShowMenu(true)} className='menu_icon' cursor="pointer"/>
+          }
         </div>
       </div>
     </>
