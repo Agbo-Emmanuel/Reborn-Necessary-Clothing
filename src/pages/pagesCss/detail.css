@@ -1,0 +1,7 @@
+.detail_body{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    padding: 50px 80px;
+    gap: 30px;
+}

@@ -492,6 +492,7 @@
     .slider_wrapper{
         width: 100%;
         gap: 0px;
+        justify-content: flex-start;
     }
 
     .section_five{
