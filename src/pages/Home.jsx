@@ -17,6 +17,7 @@ import rbnc_logo from '../assets/rbnc_logo.png'
 const Home = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentProductSlide, setCurrentProductSlide] = useState(0);
 
   const Context = [
     {
@@ -53,6 +54,14 @@ const Home = () => {
 
     return () => clearInterval(interval); 
   },[Context.length])
+
+  useEffect(()=>{
+    const interval = setInterval(() => {
+      setCurrentProductSlide(currentProductSlide => (currentProductSlide + 1) % 5);
+    }, 4000); 
+
+    return () => clearInterval(interval); 
+  },[5])
 
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -132,7 +141,13 @@ const Home = () => {
         <div className='section_four'>
           <h3>JUST FOR YOU</h3>
           <div className='section_four_product_container'>
-            <ProductCard showLastFour = {true}/>
+            <div className='slider_wrapper' 
+              style={{
+                transform: `translateX(-${currentProductSlide * 25}%)`, // Slide effect
+              }}
+            >
+              <ProductCard showLastFour = {true}/>
+            </div>
           </div>
         </div>
         <div className='section_five'>

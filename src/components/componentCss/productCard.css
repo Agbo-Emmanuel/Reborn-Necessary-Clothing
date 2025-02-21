@@ -1,6 +1,7 @@
 .product_card_body{
     width: 23%;
     height: max-content;
+    flex-shrink: 0;
 }
 
 .product_card_image_container{
