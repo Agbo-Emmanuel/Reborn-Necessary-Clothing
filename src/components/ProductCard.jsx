@@ -85,7 +85,7 @@ const ProductCard = ({limit, showLastFour}) => {
     ]
 
     const productsToDisplay = showLastFour 
-        ? products.slice(-8)  // Get the last four items
+        ? products.slice(-4)  // Get the last four items
         : limit 
             ? products.slice(0, limit)  // Get the first `limit` items
             : products;

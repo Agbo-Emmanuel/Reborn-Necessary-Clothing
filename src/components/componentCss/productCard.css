@@ -9,6 +9,7 @@
     height: 300px;
     /* background-color: red; */
     border-radius: 4px;
+    overflow: hidden;
 }
 
 .product_card_image_container img{
@@ -17,6 +18,11 @@
     object-fit: contain cover;
     object-position: flex-end center;
     border-radius: 4px;
+    transition: all .75s ease-in-out;
+}
+
+.product_card_image_container img:hover{
+    transform: scale(1.1);
 }
 
 .product_card_text_container{
@@ -56,7 +62,7 @@
 
     .product_card_image_container{
         height: 280px;
-        width: 80%;
+        width: 90%;
     }
 
     .product_card_image_container img{
@@ -65,7 +71,7 @@
     }
 
     .product_card_text_container{
-        width: 80%;
+        width: 90%;
     }
 
     .product_card_text_container p{

@@ -23,6 +23,8 @@ const Home = () => {
   const sliderRef = useRef(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  // const [isVisible, setIsVisible] = useState(true);
+  // const [isFixed, setIsFixed] = useState(true);
 
   const Context = [
     {
@@ -78,7 +80,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    setShow(slidesPerView === 1 ? 7 : 5);
+    setShow(slidesPerView === 1 ? 4 : 0);
   }, [slidesPerView]);
 
   useEffect(() => {
@@ -128,6 +130,28 @@ const Home = () => {
   };
 
 
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const heroSection = document.querySelector(".hero_section");
+  //     if (!heroSection) return;
+
+  //     const rect = heroSection.getBoundingClientRect();
+
+  //     // Check if hero section is in viewport
+  //     const inView = rect.top < window.innerHeight && rect.bottom > 0;
+  //     setIsVisible(false);
+
+  //     // If scrolled past the hero section, set position to absolute
+  //     setIsFixed(rect.bottom > window.innerHeight);
+  //   };
+
+  //   const onScroll = () => requestAnimationFrame(handleScroll);
+
+  //   window.addEventListener("scroll", onScroll);
+  //   return () => window.removeEventListener("scroll", onScroll);
+  // }, []);
+
+
   return (
     <>
       <div className='home_body'>
@@ -151,7 +175,16 @@ const Home = () => {
               ></div>
             ))}
           </div>
-          <div className='hero_section_text_container'>
+          <div 
+            className='hero_section_text_container'
+            // style={{
+            //   position: isFixed ? "fixed" : "absolute",
+            //   top: isFixed ? "10%" : "auto",
+            //   bottom: isFixed ? "auto" : "0",
+            //   opacity: isVisible ? 1 : 0,
+            //   transition: "opacity 0.5s ease-in-out",
+            // }}
+          >
             <h1>Luxury<br/>Fashion<br/>& Accessories</h1>
             <button>Explore Collection</button>
           </div>
@@ -204,7 +237,7 @@ const Home = () => {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}  
             >
-              <ProductCard showLastFour = {7}/>
+              <ProductCard showLastFour = {true}/>
             </div>
           </div>
         </div>
