@@ -326,12 +326,14 @@
     overflow: hidden;
     transition: transform 1s ease-in-out;
     position: relative;
+    justify-content: center;
 }
 
 .slider_wrapper{
     display: flex;
     gap: 20px; /* Space between slides */
     transition: transform 0.5s ease-in-out;
+    justify-content: center;
 }
 
 .section_five{
