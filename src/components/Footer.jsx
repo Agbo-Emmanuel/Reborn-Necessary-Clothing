@@ -3,9 +3,13 @@ import './componentCss/footer.css'
 
 const Footer = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <div className='footer_body'>
+        <div className='footer_link_container'>
+
+        </div>
+      </div>
+    </>
   )
 }
 

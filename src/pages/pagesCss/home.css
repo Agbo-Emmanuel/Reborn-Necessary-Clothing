@@ -158,7 +158,7 @@
     height: max-content;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     position: absolute;
     z-index: 2;
 }
@@ -204,11 +204,14 @@
 }
 
 .section_two_writeup_container_one p, .section_two_writeup_container_two p{
+    width: max-content;
     font-size: 16px;
     font-family: "Tenor Sans", serif;
     font-weight: 400;
     letter-spacing: 5px;
-    margin-top: 0px;
+    margin-top: -17px;
+    /* margin-left: 100px; */
+    /* background-color: red; */
 }
 
 .section_two_writeup_container_one p{

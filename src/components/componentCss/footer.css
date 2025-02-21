@@ -1,0 +1,8 @@
+.footer_body{
+    width: 100%;
+    height: max-content;
+    padding: 50px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
