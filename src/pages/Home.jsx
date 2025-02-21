@@ -25,16 +25,16 @@ const Home = () => {
       image: hero_section_image_one,
       text: 'A Philosophy Rooted In The Pursuit Of Alpha',
     },
-    {
-      id: 2,
-      image: hero_section_image_two,
-      text: "Your Future Is Created By What You Do Today",
-    },
-    {
-      id: 4,
-      image: hero_section_image_four,
-      text: "Professional Portfolio Management",
-    },
+    // {
+    //   id: 2,
+    //   image: hero_section_image_two,
+    //   text: "Your Future Is Created By What You Do Today",
+    // },
+    // {
+    //   id: 4,
+    //   image: hero_section_image_four,
+    //   text: "Professional Portfolio Management",
+    // },
     {
       id: 5,
       image: hero_section_image_five,
