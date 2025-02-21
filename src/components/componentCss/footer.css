@@ -12,5 +12,31 @@
     height: max-content;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
+}
+
+.footer_media_icon{
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.footer_nav{
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+}
+
+.footer_copyRight_container{
+    width: max-content;
+    height: max-content;
+}
+
+.footer_copyRight_container{
+    color: #7e7e7e;
+    font-size: 14px;
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
 }
