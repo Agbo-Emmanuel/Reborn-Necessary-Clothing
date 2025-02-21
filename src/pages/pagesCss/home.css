@@ -100,11 +100,12 @@
     width: max-content;
     height: max-content;
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     font-family: "Tenor Sans", serif;
     font-weight: 400;
     text-align: center;
     margin-top: 16px;
+    font-style: italic;
 }
 
 .section_one_product_container{
