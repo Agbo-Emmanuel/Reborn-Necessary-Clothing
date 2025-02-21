@@ -109,13 +109,13 @@ const Home = () => {
           <div className='section_two_collection_container'>
             <div className='section_two_writeup_container_one'>
               <img src={rbnc_logo} alt='img'/>
-              <p>Collection</p>
+              {/* <p>Collection</p> */}
             </div>
             <div className='section_two_writeup_container_two'>
-              <h3>October</h3>
+              <img src={rbnc_logo} alt='img'/>
               <p>Collection</p>
             </div>
-            <h1>10</h1>
+            {/* <h1>10</h1> */}
           </div>
         </div>
         <div className='section_three'>
