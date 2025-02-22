@@ -69,7 +69,7 @@ const ProductCategory = () => {
                     <p>Explore a stunning collection of women's clothing, featuring the latest trends and timeless styles designed to keep you fashionable and confident in every season.</p>
                 </section>
                 <section className='category_article_product_container'>
-                    <ProductCard/>
+                    <ProductCard width="27%"/>
                 </section>
             </article>
         </main>

@@ -127,6 +127,7 @@
     padding: 20px 0px;
     /* background-color: yellow; */
     gap: 20px;
+    justify-content: center;
 }
 
 .aside_category_price_range_container{
@@ -207,7 +208,7 @@
     }
 
     .category_article_product_container{
-        padding: 20px 16px;
+        padding: 20px 2px;
         gap: 0px;
     }
 
@@ -268,11 +269,39 @@
         width: 40px;
     }
 
+    .category_article_text_section p{
+        font-size: 16px;
+    }
+
     .category_article_text_section{
         padding: 20px 16px;
     }
 
     .category_article_product_container{
-        padding: 20px 16px;
+        padding: 20px 30px;
+        gap: 0px;
+        /* background-color: red; */
+    }
+
+    
+    .aside_category_container h2{
+        font-size: 24px;
+    }
+
+    .aside_category_link p{
+        font-size: 16px;
+    }
+
+    .aside_category_price_range_container h3{
+        font-size: 18px;
+    }
+
+    .price_ranger_container span{
+        font-size: 20px;
+        margin-top: 16px;
+    }
+
+    .price_ranger_container input{
+        height: 20px;
     }
 }

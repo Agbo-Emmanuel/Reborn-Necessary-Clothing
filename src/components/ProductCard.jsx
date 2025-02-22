@@ -14,7 +14,7 @@ import product_image11 from '../assets/product_image11.jpg'
 import product_image12 from '../assets/product_image12.jpg'
 import product_image13 from '../assets/product_image13.jpg'
 
-const ProductCard = ({limit, showLastFour}) => {
+const ProductCard = ({limit, showLastFour, width}) => {
 
     const products = [
         {
@@ -95,7 +95,7 @@ const ProductCard = ({limit, showLastFour}) => {
 
         {
             productsToDisplay.map((e)=>(
-                <div className='product_card_body'>
+                <div className='product_card_body' style={width ? {width: width} : null}>
                     <div className='product_card_image_container'>
                         <img src={e.image} alt=''/>
                     </div>
