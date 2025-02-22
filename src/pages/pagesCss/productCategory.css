@@ -278,9 +278,8 @@
     }
 
     .category_article_product_container{
-        padding: 20px 30px;
+        padding: 20px 36px !important;
         gap: 0px;
-        /* background-color: red; */
     }
 
     

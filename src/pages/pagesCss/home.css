@@ -500,11 +500,12 @@
 
     .section_four_product_container{
         gap: 0px;
+        padding: 0px 30px;
     }
 
     .slider_wrapper{
         width: 100%;
-        gap: 0px;
+        gap: 20px;
         justify-content: flex-start;
     }
 
@@ -627,11 +628,12 @@
 
     .section_four_product_container{
         gap: 0px;
+        padding: 0px 40px;
     }
 
     .slider_wrapper{
         width: 100%;
-        gap: 0px;
+        gap: 30px;
         justify-content: flex-start;
     }
 
