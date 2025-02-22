@@ -16,6 +16,7 @@
     width: 160px;
     height: 80px;
     /* background-color: green; */
+    cursor: pointer;
 }
 
 .header_logo_container img{
@@ -52,6 +53,41 @@
 
 .menu_icon{
     display: none;
+}
+
+.mobile_menu_container{
+    width: 100%;
+    height: 90vh;
+    overflow: auto;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease-in-out;
+}
+
+.mobile_header_nav{
+    text-decoration: none;
+    padding: 20px 16px;
+    color: #000;
+    font-size: 18px;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    border-bottom: 1px solid lightgrey;
+}
+
+.mobile_header_nav:hover{
+    background-color: rgb(232, 232, 232);
+}
+
+.expanded{
+    width: 100%;
+}
+
+.remove{
+    width: 0%;
 }
 
 

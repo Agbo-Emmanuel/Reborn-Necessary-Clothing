@@ -12,10 +12,12 @@ import miroodles_sticker3 from '../assets/miroodles_sticker3.png'
 import miroodles_sticker4 from '../assets/miroodles_sticker4.png'
 import section_five_bottom_image from '../assets/section_five_bottom_image.png'
 import rbnc_logo from '../assets/rbnc_logo.png'
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
 
+  const navigate = useNavigate()
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentProductSlide, setCurrentProductSlide] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(4);
@@ -198,7 +200,7 @@ const Home = () => {
             <ProductCard limit={8}/>
           </div>
           <div className='section_one_explore_container'>
-            <button>
+            <button onClick={()=>navigate("/designer-mood")}>
               Explore More
               <MdOutlineArrowForward/>
             </button>
