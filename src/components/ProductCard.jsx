@@ -11,7 +11,7 @@ import product_image8 from '../assets/product_image8.jpg'
 import product_image9 from '../assets/product_image9.jpg'
 import product_image10 from '../assets/product_image10.jpg'
 import product_image11 from '../assets/product_image11.jpg'
-import product_image12 from '../assets/product_image12.jpg'
+import product_image12 from '../assets/product_image12.png'
 import product_image13 from '../assets/product_image13.jpg'
 
 const ProductCard = ({limit, showLastFour, width}) => {
