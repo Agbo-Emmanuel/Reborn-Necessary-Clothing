@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import hero_section_image_two from "../assets/hero_section_image_two.jpg"
 import ProductCard from '../components/productCard'
 
+
 const ProductCategory = () => {
 
     const navigate = useNavigate()
