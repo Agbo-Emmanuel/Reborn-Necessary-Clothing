@@ -13,8 +13,8 @@ const Footer = () => {
           <FaTwitter className='footer_media_icon'/>
           <AiFillInstagram className='footer_media_icon'/>
           <FaYoutube className='footer_media_icon'/>
-          <Link className='footer_nav'>Designer Mood</Link>
-          <Link className='footer_nav'>For Her</Link>
+          <Link to='/designer-mood' className='footer_nav'>Designer Mood</Link>
+          <Link to="/product-category/For Her" className='footer_nav'>For Her</Link>
           <Link className='footer_nav'>For Him</Link>
           <Link className='footer_nav'>Accessories</Link>
         </div>
