@@ -82,7 +82,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    setShow(slidesPerView === 1 ? 4 : 0);
+    setShow(slidesPerView === 1 ? 4 : slidesPerView === 2 ? 3 : 0);
   }, [slidesPerView]);
 
   useEffect(() => {

@@ -417,6 +417,134 @@
 
 
 
+@media screen and (max-width: 900px){
+
+    .hero_section{
+        height: 70vh;
+    }
+
+    .hero_slide{
+        background-position: center center !important;
+    }
+
+    .hero_section_text_container{
+        left: 20px;
+    }
+
+    .section_one{
+        padding: 60px 16px;
+    }
+
+    .section_one_product_container{
+        justify-content: flex-start;
+        /* padding: 0px 40px; */
+        /* background-color: red; */
+        gap: 0px;
+    }
+
+    .section_one_text_container h3{
+        font-size: 40px;
+    }
+    .section_one_text_container p{
+        font-size: 26px;
+    }
+
+    .section_one_explore_container button{
+        font-size: 28px;
+        margin-top: 20px;
+    }
+
+    .section_two{
+        padding: 20px 16px;
+    }
+
+    .section_two_collection_container{
+        height: 50vh;
+        background-position: center center;
+    }
+
+    .section_two_writeup_container_one{
+        display: flex;
+    }
+
+    .section_two_writeup_container_two{
+        right: 20px;
+        top: 30%;
+    }
+
+    .section_two_writeup_container_two img{
+        width: 280px;
+        height: 140px;
+    }
+
+    .section_two_writeup_container_two p{
+        font-size: 16px;
+        margin-top: -14px;
+        margin-right: 20px;
+    }
+
+    .section_three{
+        height: 700px;
+        padding: 40px 16px;
+    }
+
+    .section_four{
+        padding: 50px 16px;
+        gap: 30px;
+    }
+
+    .section_four h3{
+        font-size: 30px;
+    }
+
+    .section_four_product_container{
+        gap: 0px;
+    }
+
+    .slider_wrapper{
+        width: 100%;
+        gap: 0px;
+        justify-content: flex-start;
+    }
+
+    .section_five{
+        padding: 20px 16px;
+        gap: 20px;
+    }
+
+    .section_five p{
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .section_five_middle_container{
+        gap: 30px;
+    }
+
+    .section_five_middle_item_container{
+        width: 42%;
+    }
+
+    .section_five_middle_item_container img{
+        height: 60px;
+    }
+    
+    .section_five_middle_item_container p{
+        line-height: 24px;
+    }
+
+    .section_five_bottom_container{
+        width: 140px;
+        height: 140px;
+    }
+
+}
+
+
+
+
+
+
 
 @media screen and (max-width: 768px){
 

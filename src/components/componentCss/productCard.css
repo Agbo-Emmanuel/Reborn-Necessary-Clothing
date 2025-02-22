@@ -6,7 +6,7 @@
 
 .product_card_image_container{
     width: 100%;
-    height: 300px;
+    height: 500px;
     /* background-color: red; */
     border-radius: 4px;
     overflow: hidden;
@@ -49,6 +49,37 @@
     font-weight: 500;
 }
 
+
+@media screen and (max-width: 900px){
+
+    .product_card_body{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .product_card_image_container{
+        height: 600px;
+        width: 96%;
+    }
+
+    .product_card_image_container img{
+        object-fit: contain cover;
+        object-position: center center;
+    }
+
+    .product_card_text_container{
+        width: 96%;
+    }
+
+    .product_card_text_container p{
+        font-size: 22px;
+        text-align: center;
+    }
+
+}
 
 
 @media screen and (max-width: 768px){

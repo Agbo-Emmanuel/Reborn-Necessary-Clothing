@@ -92,6 +92,37 @@
 
 
 
+@media screen and (max-width: 900px){
+
+    .header_nav_container{
+        display: none;
+    }
+
+    .cart_icon{
+        display: none;
+    }
+    
+    .header_logo_container{
+        width: 160px;
+        height: 120px;
+    }
+
+    .header_body{
+        padding: 20px 16px;
+    }
+
+    .header_account_container{
+        font-size: 30px;
+    }
+
+    .menu_icon{
+        display: flex;
+    }
+
+}
+
+
+
 @media screen and (max-width: 768px){
 
     .header_nav_container{

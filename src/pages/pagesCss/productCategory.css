@@ -163,6 +163,77 @@
 }
 
 
+
+@media screen and (max-width: 900px){
+    .product_category_body{
+        padding: 20px 16px;
+        flex-direction: column-reverse;
+    }
+
+    .product_category_aside{
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .product_category_article{
+        width: 100%;
+    }
+
+    .category_article_hero_section{
+        height: 400px;
+    }
+
+    .category_article_hero_section h1{
+        font-size: 50px;
+    }
+    
+    .category_article_hero_section h1:before{
+        right: -30px;
+        width: 100px;
+    }
+    
+    .category_article_hero_section h1:after{
+        top: -2px;
+        left: -30px;
+        width: 40px;
+    }
+
+    .category_article_text_section{
+        padding: 50px 16px;
+    }
+
+    .category_article_text_section p{
+        font-size: 20px;
+    }
+
+    .category_article_product_container{
+        padding: 20px 16px;
+        gap: 0px;
+    }
+
+    .aside_category_container h2{
+        font-size: 30px;
+    }
+
+    .aside_category_link p{
+        font-size: 20px;
+    }
+
+    .aside_category_price_range_container h3{
+        font-size: 24px;
+    }
+
+    .price_ranger_container span{
+        font-size: 26px;
+        margin-top: 16px;
+    }
+
+    .price_ranger_container input{
+        height: 20px;
+    }
+}
+
+
 @media screen and (max-width: 768px){
     .product_category_body{
         padding: 20px 16px;
