@@ -1,6 +1,6 @@
 import React from 'react'
 import './pagesCss/newArrivals.css'
-import ProductCard from '../components/productCard'
+import ProductCard from '../components/ProductCard'
 
 const NewArrivals = () => {
   return (
