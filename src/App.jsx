@@ -5,6 +5,7 @@ import Landing from './pages/Landing'
 import Detail from './pages/Detail'
 import ProductCategory from './pages/ProductCategory'
 import NewArrivals from './pages/NewArrivals'
+import Cart from './pages/Cart'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path = '/detail' element={<Detail/>} />
             <Route path='/product-category/:category' element={<ProductCategory/>}/>
             <Route path='/designer-mood' element={<NewArrivals/>}/>
+            <Route path='/cart' element={<Cart/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

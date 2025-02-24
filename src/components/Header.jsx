@@ -25,7 +25,7 @@ const Header = () => {
         </div>
         <div className='header_account_container'>
           <IoSearchOutline cursor="pointer"/>
-          <MdOutlineShoppingBag className='cart_icon' cursor="pointer"/>
+          <MdOutlineShoppingBag className='cart_icon' cursor="pointer" onClick={()=>navigate("/cart")}/>
           {
             showMenu == true ? 
               <IoClose onClick={()=>setShowMenu(false)} className='menu_icon' cursor="pointer"/> : 
@@ -38,7 +38,7 @@ const Header = () => {
           <Link onClick={()=>setShowMenu(false)} to="/product-category/For Her" className='mobile_header_nav'>For Her</Link>
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>For Him</Link>
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>Accessories</Link>
-          <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>Cart</Link>
+          <Link onClick={()=>setShowMenu(false)} to="/cart" className='mobile_header_nav'>Cart</Link>
         </div> 
       </div>
     </>
