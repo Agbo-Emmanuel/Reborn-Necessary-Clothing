@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './componentCss/header.css'
-import rbnc_logo from '../assets/rbnc_logo.png'
+import rbnc_logo_white from '../assets/rbnc_logo_white.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { IoSearchOutline, IoMenu, IoClose } from "react-icons/io5";
 import { MdOutlineShoppingBag } from "react-icons/md";
@@ -18,7 +18,7 @@ const Header = () => {
     <>
       <div className='header_body'>
         <div onClick={()=>navigate("/")} className='header_logo_container'>
-          <img src={rbnc_logo} alt=''/>
+          <img src={rbnc_logo_white} alt=''/>
         </div>
         <div className='header_nav_container'>
           <Link to='/designer-mood' className='header_nav'>Designer Mood</Link>
