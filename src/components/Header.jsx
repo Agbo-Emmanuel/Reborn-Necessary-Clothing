@@ -4,12 +4,15 @@ import rbnc_logo from '../assets/rbnc_logo.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { IoSearchOutline, IoMenu, IoClose } from "react-icons/io5";
 import { MdOutlineShoppingBag } from "react-icons/md";
+import { FaUserLarge, FaRegUser } from "react-icons/fa6";
+import { BiPackage } from "react-icons/bi";
 
 const Header = () => {
 
   const navigate = useNavigate()
 
   const [showMenu, setShowMenu] = useState(false)
+  const [showAccntMenu, setShowAccntMenu] = useState(false)
 
   return (
     <>
@@ -26,9 +29,19 @@ const Header = () => {
         <div className='header_account_container'>
           <IoSearchOutline cursor="pointer"/>
           <MdOutlineShoppingBag className='cart_icon' cursor="pointer" onClick={()=>navigate("/cart")}/>
+          <FaUserLarge className='cart_icon' cursor="pointer" onClick={()=>setShowAccntMenu(!showAccntMenu)}/>
+          {
+            showAccntMenu == true ? 
+              <div className='account_selection_container'>
+                <button>Sign In</button>
+                <Link className='account_selection_link'> <FaRegUser className='asl_icon'/> My Account</Link>
+                <Link className='account_selection_link'> <BiPackage className='asl_icon'/> Orders</Link>
+              </div> : null
+          }
           {
             showMenu == true ? 
-              <IoClose onClick={()=>setShowMenu(false)} className='menu_icon' cursor="pointer"/> : 
+              <IoClose onClick={()=>setShowMenu(false)} className='menu_icon' cursor="pointer"/> 
+            : 
               <IoMenu onClick={()=>setShowMenu(true)} className='menu_icon' cursor="pointer"/>
           }
         </div>
@@ -39,6 +52,8 @@ const Header = () => {
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>For Him</Link>
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>Accessories</Link>
           <Link onClick={()=>setShowMenu(false)} to="/cart" className='mobile_header_nav'>Cart</Link>
+          <Link onClick={()=>setShowMenu(false)} to="" className='mobile_header_nav'>Sign In</Link>
+          <Link onClick={()=>setShowMenu(false)} to="" className='mobile_header_nav'>Orders</Link>
         </div> 
       </div>
     </>
