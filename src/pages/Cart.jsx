@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './pagesCss/cart.css'
-import product_image1 from '../assets/product_image1.png'
+import product_image1 from '../assets/product_image1.jpg'
 import { BsFillCartXFill } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 
