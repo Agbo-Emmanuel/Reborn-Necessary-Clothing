@@ -597,8 +597,8 @@
     }
 
     .section_two_writeup_container_two{
-        right: 100px;
-        top: 30%;
+        right: 80px;
+        top: 42%;
     }
 
     .section_two_writeup_container_two img{
@@ -608,8 +608,8 @@
 
     .section_two_writeup_container_two p{
         font-size: 16px;
-        margin-top: -14px;
-        margin-right: 20px;
+        margin-top: -8px;
+        margin-right: 30px;
     }
 
     .section_three{
