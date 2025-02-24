@@ -6,12 +6,16 @@ import Detail from './pages/Detail'
 import ProductCategory from './pages/ProductCategory'
 import NewArrivals from './pages/NewArrivals'
 import Cart from './pages/Cart'
+import Login from './pages/onBoarding/Login'
+import Register from './pages/onBoarding/Register'
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
+          <Route path = '/login' element={<Login/>}/>
+          <Route path = '/register' element={<Register/>}/>
           <Route element={<Landing/>}>
             <Route path = '/' element={<Home/>} />
             <Route path = '/detail' element={<Detail/>} />

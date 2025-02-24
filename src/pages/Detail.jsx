@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './pagesCss/detail.css'
 import { IoCartOutline } from "react-icons/io5";
-import product_image2 from "../assets/product_image2.jpg"
+import product_image2 from "../assets/product_image2.png"
 
 const Detail = () => {
 

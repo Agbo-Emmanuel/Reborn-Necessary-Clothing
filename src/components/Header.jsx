@@ -33,7 +33,7 @@ const Header = () => {
           {
             showAccntMenu == true ? 
               <div className='account_selection_container'>
-                <button>Sign In</button>
+                <button onClick={()=>navigate("/login")}>Sign In</button>
                 <Link className='account_selection_link'> <FaRegUser className='asl_icon'/> My Account</Link>
                 <Link className='account_selection_link'> <BiPackage className='asl_icon'/> Orders</Link>
               </div> : null
@@ -52,7 +52,7 @@ const Header = () => {
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>For Him</Link>
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>Accessories</Link>
           <Link onClick={()=>setShowMenu(false)} to="/cart" className='mobile_header_nav'>Cart</Link>
-          <Link onClick={()=>setShowMenu(false)} to="" className='mobile_header_nav'>Sign In</Link>
+          <Link onClick={()=>setShowMenu(false)} to="/login" className='mobile_header_nav'>Sign In</Link>
           <Link onClick={()=>setShowMenu(false)} to="" className='mobile_header_nav'>Orders</Link>
         </div> 
       </div>
