@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import './pagesCss/home.css'
-import ProductCard from '../components/ProductCard'
+import { ProductCard } from '../components/ProductCard'
 import hero_section_image_one from '../assets/hero_section_image_one.jpg';
 import hero_section_image_five from '../assets/hero_section_image_five.jpg';
 import hero_section_image_seven from '../assets/hero_section_image_seven.jpg';

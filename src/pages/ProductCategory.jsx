@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './pagesCss/productCategory.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import hero_section_image_two from "../assets/hero_section_image_two.jpg"
-import ProductCard from '../components/ProductCard'
+import {MainProductCard} from '../components/ProductCard'
 
 
 const ProductCategory = () => {
@@ -69,7 +69,7 @@ const ProductCategory = () => {
                     <p>Explore a stunning collection of women's clothing, featuring the latest trends and timeless styles designed to keep you fashionable and confident in every season.</p>
                 </section>
                 <section className='category_article_product_container'>
-                    <ProductCard width="27%"/>
+                    <MainProductCard width="27%"/>
                 </section>
             </article>
         </main>

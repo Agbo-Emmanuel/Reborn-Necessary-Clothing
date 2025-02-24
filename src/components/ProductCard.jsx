@@ -14,75 +14,89 @@ import product_image11 from '../assets/product_image11.jpg'
 import product_image12 from '../assets/product_image12.png'
 import product_image13 from '../assets/product_image13.jpg'
 
-const ProductCard = ({limit, showLastFour, width}) => {
+export const ProductCard = ({limit, showLastFour, width}) => {
 
     const products = [
         {
+            id: 1,
             image: product_image1,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 2,
             image: product_image2,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 3,
             image: product_image3,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 4,
             image: product_image4,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 5,
             image: product_image5,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 6,
             image: product_image6,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 7,
             image: product_image7,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 8,
             image: product_image8,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 9,
             image: product_image9,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 10,
             image: product_image10,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 11,
             image: product_image11,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 12,
             image: product_image12,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
         {
+            id: 13,
             image: product_image13,
             name: "21WN reversible angora cardigan",
             price: "$120",
         },
     ]
+
 
     const productsToDisplay = showLastFour 
         ? products.slice(-4)  // Get the last four items
@@ -95,7 +109,7 @@ const ProductCard = ({limit, showLastFour, width}) => {
 
         {
             productsToDisplay.map((e)=>(
-                <div className='product_card_body' style={width ? {width: width} : null}>
+                <div key={e.id} className='product_card_body' style={width ? {width: width} : null}>
                     <div className='product_card_image_container'>
                         <img src={e.image} alt=''/>
                     </div>
@@ -110,4 +124,107 @@ const ProductCard = ({limit, showLastFour, width}) => {
   )
 }
 
-export default ProductCard
+
+export const MainProductCard = ({limit, showLastFour, width})=>{
+
+    const mainProducts = [
+        {
+            id: 1,
+            image: product_image1,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 2,
+            image: product_image2,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 3,
+            image: product_image3,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 4,
+            image: product_image4,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 5,
+            image: product_image5,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 6,
+            image: product_image6,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 7,
+            image: product_image7,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 8,
+            image: product_image8,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 9,
+            image: product_image9,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 10,
+            image: product_image10,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 11,
+            image: product_image11,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 12,
+            image: product_image12,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+        {
+            id: 13,
+            image: product_image13,
+            name: "21WN reversible angora cardigan",
+            price: "$120",
+        },
+    ]
+
+    return(
+        <>
+        
+        {
+            mainProducts.map((e)=>(
+                <div key={e.id} className='product_card_body' style={width ? {width: width} : null}>
+                    <div className='product_card_image_container'>
+                        <img src="" alt=''/>
+                    </div>
+                    <div className='product_card_text_container'>
+                        <p>{e.name}</p>
+                        {/* <h6>{e.price}</h6> */}
+                    </div>
+                </div>
+            ))
+        }
+
+        </>
+    )
+}
