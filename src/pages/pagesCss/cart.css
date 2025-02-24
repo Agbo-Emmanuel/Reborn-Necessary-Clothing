@@ -177,7 +177,7 @@ th:nth-child(4), td:nth-child(4) {
 .cart_product_image_container{
     width: 100px;
     height: 100px;
-    background-color: purple;
+    /* background-color: purple; */
     border-radius: 1px;
 }
 
