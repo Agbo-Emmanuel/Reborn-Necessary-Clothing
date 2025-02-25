@@ -1,5 +1,5 @@
 import React from 'react'
-import './onBoardingCss/register.css'
+import './onBoardingCss/onboarding.css'
 
 const Register = () => {
   return (
