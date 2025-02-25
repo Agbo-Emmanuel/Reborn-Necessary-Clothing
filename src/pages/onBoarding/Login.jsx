@@ -43,7 +43,7 @@ const Login = () => {
                 </article>
                 <button>Login</button>
                 <article className='onboarding_bottom_text_container'>
-                    <p>Don't have an account? <span>REGISTER</span></p>
+                    <p>Don't have an account? <span onClick={()=>navigate("/register")}>REGISTER</span></p>
                 </article>
             </section>
         </main>
