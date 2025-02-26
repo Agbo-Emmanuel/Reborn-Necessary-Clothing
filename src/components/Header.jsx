@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './componentCss/header.css'
 import rbnc_logo_white from '../assets/rbnc_logo_white.png'
 import { Link, useNavigate } from 'react-router-dom'
@@ -13,6 +13,30 @@ const Header = () => {
 
   const [showMenu, setShowMenu] = useState(false)
   const [showAccntMenu, setShowAccntMenu] = useState(false)
+  const [userActive, setUserActive] = useState(false)
+
+  const activeToken = localStorage.getItem("token")
+
+  useEffect(()=>{
+    activeToken ? setUserActive(true) : setUserActive(false)
+  },[activeToken])
+
+  const gotToAccount = ()=>{
+    activeToken ? navigate("/account") : navigate("/login")
+    setShowAccntMenu(false)
+    setShowMenu(false)
+  }
+  const goToOrders = ()=>{
+    activeToken ? navigate("/orders") : navigate("/login")
+    setShowAccntMenu(false)
+    setShowMenu(false)
+  }
+
+  const logout = ()=>{
+    localStorage.removeItem("token")
+    setShowAccntMenu(false)
+    navigate("/login")
+  }
 
   return (
     <>
@@ -33,9 +57,14 @@ const Header = () => {
           {
             showAccntMenu == true ? 
               <div className='account_selection_container'>
-                <button onClick={()=>navigate("/login")}>Sign In</button>
-                <Link className='account_selection_link'> <FaRegUser className='asl_icon'/> My Account</Link>
-                <Link className='account_selection_link'> <BiPackage className='asl_icon'/> Orders</Link>
+                {
+                  userActive == true ? null : <button onClick={()=>navigate("/login")}>Sign In</button>
+                }
+                <div className='account_selection_link' onClick={gotToAccount}> <FaRegUser className='asl_icon'/> My Account</div>
+                <div className='account_selection_link' onClick={goToOrders}> <BiPackage className='asl_icon'/> Orders</div>
+                {
+                  userActive == true ? <div className='account_selection_logout_link' onClick={logout}>Logout</div> : null
+                }
               </div> : null
           }
           {
@@ -52,8 +81,14 @@ const Header = () => {
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>For Him</Link>
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>Accessories</Link>
           <Link onClick={()=>setShowMenu(false)} to="/cart" className='mobile_header_nav'>Cart</Link>
-          <Link onClick={()=>setShowMenu(false)} to="/login" className='mobile_header_nav'>Sign In</Link>
-          <Link onClick={()=>setShowMenu(false)} to="" className='mobile_header_nav'>Orders</Link>
+          <Link onClick={gotToAccount} to="/account" className='mobile_header_nav'>My Account</Link>
+          <Link onClick={goToOrders} to="/orders" className='mobile_header_nav'>Orders</Link>
+          {
+            userActive == true ? 
+              <Link onClick={logout} className='mobile_header_nav'>Logout</Link>
+            : 
+              <Link onClick={()=>setShowMenu(false)} to="/login" className='mobile_header_nav'>Sign In</Link>
+          }
         </div> 
       </div>
     </>

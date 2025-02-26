@@ -10,11 +10,17 @@ const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false)
 
+    function login (e){
+        e.preventDefault();
+        localStorage.setItem("token", "active")
+        navigate("/")
+    }
+
   return (
     <>
     
         <main className='onboarding_body'>
-            <section className='onboarding_container'>
+            <form onSubmit={login} className='onboarding_container'>
                 <article className='onboarding_logo_container' onClick={()=>navigate("/")}>
                     <img src={rbnc_logo_white} alt='logo'/>
                 </article>
@@ -41,11 +47,11 @@ const Login = () => {
                         </div>
                     </div>
                 </article>
-                <button>Login</button>
+                <button type='submit'>Login</button>
                 <article className='onboarding_bottom_text_container'>
                     <p>Don't have an account? <span onClick={()=>navigate("/register")}>REGISTER</span></p>
                 </article>
-            </section>
+            </form>
         </main>
     
     </>

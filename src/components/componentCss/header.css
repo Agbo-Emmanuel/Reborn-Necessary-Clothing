@@ -63,7 +63,7 @@
     width: 200px;
     height: max-content;
     border-radius: 2px;
-    padding: 20px 10px;
+    padding: 10px 10px;
     animation: slideIn 0.5s 1;
     transition: transform .7s;
 }
@@ -105,6 +105,7 @@
     font-family: "Poppins", serif;
     font-weight: 400;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .asl_icon{
@@ -112,6 +113,26 @@
 }
 
 .account_selection_link:hover{
+    background-color: rgb(246, 246, 246);
+}
+
+.account_selection_logout_link{
+    text-decoration: none;
+    width: 100%;
+    padding: 10px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 14px;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    border-top: 1px solid lightgrey;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.account_selection_logout_link:hover{
     background-color: rgb(246, 246, 246);
 }
 

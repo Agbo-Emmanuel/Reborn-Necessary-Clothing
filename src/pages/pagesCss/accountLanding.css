@@ -1,0 +1,144 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.account_landing_body{
+    width: 100%;
+    height: max-content;
+    padding: 20px 80px;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 100px;
+}
+
+.account_landing_routing_section{
+    width: 20%;
+    height: max-content;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.account_landing_details_body{
+    width: calc(100% - (20% + 20px));
+    height: max-content;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.accountNotActive, .accountActive{
+    text-decoration: none;
+    width: 100%;
+    padding: 14px 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #000;
+    font-size: 16px;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ar_icon{
+    font-size: 20px;
+}
+
+.accountNotActive:hover{
+    background-color: rgb(227, 227, 227);
+}
+
+.accountActive{
+    background-color: rgb(213, 213, 213);
+}
+
+.account_landing_logout{
+    width: 100%;
+    padding: 14px 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #000;
+    font-size: 16px;
+    font-family: "Poppins", serif;
+    font-weight: 400;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.account_landing_logout:hover{
+    background-color: rgb(227, 227, 227);
+}
+
+.account_mobile_top_section{
+    width: 100%;
+    height: max-content;
+    padding: 30px 16px;
+    background-color: #000;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.account_mobile_top_section h5{
+    color: #fff;
+    font-size: 15px;
+    font-family: "Inter", serif;
+    font-weight: 500
+}
+
+.account_mobile_top_section p{
+    color: #fff;
+    font-size: 13px;
+    font-family: "Inter", serif;
+    font-weight: 400
+}
+
+
+
+@media screen and (max-width: 900px) {
+
+    .account_landing_body{
+        padding: 0px 0px;
+        gap: 0px;
+        margin-bottom: 20px;
+        flex-direction: column;
+    }
+
+    .account_landing_details_body{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99999999999999999;
+        width: 100%;
+        height: 100vh;
+        background-color: #fff;
+        border-radius: 0px;
+        overflow: auto;
+    }
+
+    .account_landing_details_body.show {
+        display: block;
+    }
+
+    .account_mobile_top_section{
+        display: flex;
+    }
+
+    .account_landing_routing_section{
+        width: 100%;
+        border-radius: 0px;
+        height: 50vh;
+    }
+
+    .accountNotActive, .accountActive{
+        border-radius: 0px;
+    }
+
+    .ar_icon_mobile{
+        display: none;
+    }
+
+}

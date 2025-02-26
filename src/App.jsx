@@ -8,6 +8,9 @@ import NewArrivals from './pages/NewArrivals'
 import Cart from './pages/Cart'
 import Login from './pages/onBoarding/Login'
 import Register from './pages/onBoarding/Register'
+import Account from './pages/Account'
+import AccountLanding from './pages/AccountLanding'
+import Orders from './pages/Orders'
 
 const App = () => {
   return (
@@ -22,6 +25,10 @@ const App = () => {
             <Route path='/product-category/:category' element={<ProductCategory/>}/>
             <Route path='/designer-mood' element={<NewArrivals/>}/>
             <Route path='/cart' element={<Cart/>}/>
+            <Route element={<AccountLanding/>}>
+              <Route path='/account' element={<Account/>}/>
+              <Route path='/orders' element={<Orders/>}/>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
