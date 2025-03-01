@@ -21,6 +21,7 @@
 .orders_top_icon{
     color: #333333;
     font-size: 22px;
+    display: none;
 }
 
 .orders_top_item h3{
@@ -79,6 +80,10 @@
 
     .orders_detail_top P{
         padding: 20px 4px 14px;
+    }
+
+    .orders_top_icon{
+        display: block;
     }
 
 }

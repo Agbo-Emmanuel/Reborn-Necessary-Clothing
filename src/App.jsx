@@ -11,6 +11,7 @@ import Register from './pages/onBoarding/Register'
 import Account from './pages/Account'
 import AccountLanding from './pages/AccountLanding'
 import Orders from './pages/Orders'
+import Checkout from './pages/Checkout'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route path='/product-category/:category' element={<ProductCategory/>}/>
             <Route path='/designer-mood' element={<NewArrivals/>}/>
             <Route path='/cart' element={<Cart/>}/>
+            <Route path='/checkout' element={<Checkout/>}/>
             <Route element={<AccountLanding/>}>
               <Route path='/account' element={<Account/>}/>
               <Route path='/orders' element={<Orders/>}/>

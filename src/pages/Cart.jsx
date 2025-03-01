@@ -17,22 +17,6 @@ const Cart = () => {
             qty: 2,
             unitPrice: 240,
         },
-        {
-            id: 2,
-            productImage: product_image1,
-            productName: "21WN reversible angora cardigan2",
-            price: 120,
-            qty: 2,
-            unitPrice: 240,
-        },
-        {
-            id: 3,
-            productImage: product_image1,
-            productName: "21WN reversible angora cardiga3",
-            price: 120,
-            qty: 2,
-            unitPrice: 240,
-        }
     ])
 
     const [subtotal, setSubtotal] = useState(0)
@@ -123,7 +107,7 @@ const Cart = () => {
                                 <p>TOTAL</p>
                                 <p>${total}</p>
                             </article>
-                            <button>Checkout</button>
+                            <button onClick={()=>navigate("/checkout")}>Checkout</button>
                         </section>
                     </main>
             }

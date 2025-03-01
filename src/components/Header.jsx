@@ -52,7 +52,7 @@ const Header = () => {
         </div>
         <div className='header_account_container'>
           <IoSearchOutline cursor="pointer"/>
-          <MdOutlineShoppingBag className='cart_icon' cursor="pointer" onClick={()=>navigate("/cart")}/>
+          <MdOutlineShoppingBag className='cart_icon showCart' cursor="pointer" onClick={()=>navigate("/cart")}/>
           <FaUserLarge className='cart_icon' cursor="pointer" onClick={()=>setShowAccntMenu(!showAccntMenu)}/>
           {
             showAccntMenu == true ? 
@@ -80,9 +80,9 @@ const Header = () => {
           <Link onClick={()=>setShowMenu(false)} to="/product-category/For Her" className='mobile_header_nav'>For Her</Link>
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>For Him</Link>
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>Accessories</Link>
-          <Link onClick={()=>setShowMenu(false)} to="/cart" className='mobile_header_nav'>Cart</Link>
-          <Link onClick={gotToAccount} to="/account" className='mobile_header_nav'>My Account</Link>
-          <Link onClick={goToOrders} to="/orders" className='mobile_header_nav'>Orders</Link>
+          {/* <Link onClick={()=>setShowMenu(false)} to="/cart" className='mobile_header_nav'>Cart</Link> */}
+          <div onClick={gotToAccount} to="/account" className='mobile_header_nav'>My Account</div>
+          <div onClick={goToOrders} to="/orders" className='mobile_header_nav'>Orders</div>
           {
             userActive == true ? 
               <Link onClick={logout} className='mobile_header_nav'>Logout</Link>
