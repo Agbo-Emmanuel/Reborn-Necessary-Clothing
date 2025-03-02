@@ -12,6 +12,11 @@ import Account from './pages/Account'
 import AccountLanding from './pages/AccountLanding'
 import Orders from './pages/Orders'
 import Checkout from './pages/Checkout'
+import Dashboard from './dashboard/Dashboard'
+import DashboardLanding from './dashboard/DashboardLanding'
+import Product from './dashboard/Product'
+import ManageOrders from './dashboard/ManageOrders'
+import ManageUsers from './dashboard/ManageUsers'
 
 const App = () => {
   return (
@@ -20,6 +25,12 @@ const App = () => {
         <Routes>
           <Route path = '/login' element={<Login/>}/>
           <Route path = '/register' element={<Register/>}/>
+          <Route element={<DashboardLanding/>}>
+            <Route path='/dashboard' element={<Dashboard/>}/>
+            <Route path='/manage-products' element={<Product/>}/>
+            <Route path='/manage-orders' element={<ManageOrders/>}/>
+            <Route path='/manage-users' element={<ManageUsers/>}/>
+          </Route>
           <Route element={<Landing/>}>
             <Route path = '/' element={<Home/>} />
             <Route path = '/detail' element={<Detail/>} />
