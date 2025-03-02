@@ -1,12 +1,15 @@
 import React from 'react'
 import './dashboardCss/dashboardLanding.css'
 import rbnc_logo_white from '../assets/rbnc_logo_white.png'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { MdDashboard, MdLogout, MdManageSearch } from "react-icons/md";
 import { FaUserCog, FaUserCircle } from "react-icons/fa";
 import { BiPackage } from "react-icons/bi";
 
 const DashboardLanding = () => {
+
+    const navigate = useNavigate()
+
   return (
     <>
         <main className='dashboard_landing_body'>
@@ -40,7 +43,7 @@ const DashboardLanding = () => {
             <section className='dashboard_landing_mainPage_container'>
                 <article className='dashboard_landing_header_container'>
                     <div className='dashboard_landing_header_left_container'>
-                        <button>+ Upload Product</button>
+                        <button onClick={()=>navigate("/manage-products")}>+ Add New Product</button>
                     </div>
                     <div className='dashboard_landing_header_right_container'>
                         <div className='dashboard_landing_header_profile_container'>
