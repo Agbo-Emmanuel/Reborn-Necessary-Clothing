@@ -13,11 +13,36 @@ import miroodles_sticker4 from '../assets/miroodles_sticker4.png'
 import section_five_bottom_image from '../assets/section_five_bottom_image.png'
 import rbnc_logo from '../assets/rbnc_logo.png'
 import { useNavigate } from 'react-router-dom';
+import Messagify from '../components/Messagify';
 
 
 const Home = () => {
 
   const navigate = useNavigate()
+  const [showMessage, setShowMessage] = useState(false)
+  const [message, setMessage] = useState(() => {
+    const storedMessage = localStorage.getItem("message");
+    return storedMessage ? JSON.parse(storedMessage) : null;
+   });
+      
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedMessage = localStorage.getItem("message");
+      if (storedMessage) {
+        setMessage(JSON.parse(storedMessage));
+      } else {
+        setMessage(null);
+      }
+    };
+      
+    setTimeout(() => {
+      localStorage.removeItem("message");
+      setMessage(null); // Clear the state
+    }, 5000);
+      
+    handleStorageChange()
+  }, [showMessage]);
+  
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentProductSlide, setCurrentProductSlide] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(4);
@@ -132,30 +157,11 @@ const Home = () => {
   };
 
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const heroSection = document.querySelector(".hero_section");
-  //     if (!heroSection) return;
-
-  //     const rect = heroSection.getBoundingClientRect();
-
-  //     // Check if hero section is in viewport
-  //     const inView = rect.top < window.innerHeight && rect.bottom > 0;
-  //     setIsVisible(false);
-
-  //     // If scrolled past the hero section, set position to absolute
-  //     setIsFixed(rect.bottom > window.innerHeight);
-  //   };
-
-  //   const onScroll = () => requestAnimationFrame(handleScroll);
-
-  //   window.addEventListener("scroll", onScroll);
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, []);
-
-
   return (
     <>
+      {
+        message == null ? null : <Messagify type={message.type} message={message.value}/>
+      }
       <div className='home_body'>
         <div className='hero_section'>
           <div
