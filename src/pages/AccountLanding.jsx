@@ -4,6 +4,8 @@ import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { FaRegUser } from "react-icons/fa6";
 import { BiPackage } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
+import axios from 'axios';
+import Messagify from '../components/Messagify';
 
 const AccountLanding = () => {
 
@@ -23,12 +25,65 @@ const AccountLanding = () => {
         }
     }, [location.pathname]);
 
+    const [user, setUser]= useState()
+        const [showMessage, setShowMessage] = useState(false)
+        const [message, setMessage] = useState(() => {
+            const storedMessage = localStorage.getItem("message");
+            return storedMessage ? JSON.parse(storedMessage) : null;
+        });
+                    
+        useEffect(() => {
+            const handleStorageChange = () => {
+            const storedMessage = localStorage.getItem("message");
+            if (storedMessage) {
+                setMessage(JSON.parse(storedMessage));
+            } else {
+                setMessage(null);
+            }
+            };
+                    
+            setTimeout(() => {
+            localStorage.removeItem("message");
+            setMessage(null); // Clear the state
+            }, 5000);
+                    
+            handleStorageChange()
+        }, [showMessage]);
+    
+        useEffect(()=>{
+            const getUser = async ()=>{
+                try{
+                    const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-user"
+                    const token = localStorage.getItem('token');
+                    const theHeaders = {
+                      headers: {
+                        'Authorization': `Bearer ${token}`
+                        }
+                    }
+                    const response = await axios.get(url,theHeaders)
+                    console.log(response)
+                    setUser(response.data.user)
+                }catch(error){
+                    console.log(error)
+                    setShowMessage(!showMessage)
+                    error.message == "Network Error" ? 
+                    localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"})) : null
+                }
+            }
+    
+            getUser()
+        },[])
+    
+
   return (
     <>
+        {
+            message == null ? null : <Messagify type={message.type} message={message.value}/>
+        }
         <main className='account_landing_body'>
             <section className='account_mobile_top_section'>
-                <h5>Welcome, Agbo Emmanuel</h5>
-                <p>agboe4102@gmail.com</p>
+                <h5>Welcome, {user?.fullName}</h5>
+                <p>{user?.email}</p>
             </section>
             <section className='account_landing_routing_section'>
                 <NavLink to="/account" className={({isActive})=> isActive ? "accountActive" : "accountNotActive"}><FaRegUser className='ar_icon ar_icon_mobile'/> My RBNC Account</NavLink>

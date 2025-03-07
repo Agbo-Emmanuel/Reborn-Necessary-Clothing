@@ -3,24 +3,73 @@ import './pagesCss/cart.css'
 import product_image1 from '../assets/product_image1.png'
 import { BsFillCartXFill } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Messagify from '../components/Messagify';
 
 const Cart = () => {
 
     const navigate = useNavigate()
+    const [showMessage, setShowMessage] = useState(false)
+    const [message, setMessage] = useState(() => {
+        const storedMessage = localStorage.getItem("message");
+        return storedMessage ? JSON.parse(storedMessage) : null;
+    });
+        
+    useEffect(() => {
+        const handleStorageChange = () => {
+        const storedMessage = localStorage.getItem("message");
+        if (storedMessage) {
+            setMessage(JSON.parse(storedMessage));
+        } else {
+            setMessage(null);
+        }
+        };
+        
+        setTimeout(() => {
+        localStorage.removeItem("message");
+        setMessage(null); // Clear the state
+        }, 5000);
+        
+        handleStorageChange()
+    }, [showMessage]);
 
     const [cart, setCart] = useState([
-        {
-            id: 1,
-            productImage: product_image1,
-            productName: "21WN reversible angora cardigan",
-            price: 120,
-            qty: 2,
-            unitPrice: 240,
-        },
+        // {
+        //     id: 1,
+        //     productImage: product_image1,
+        //     productName: "21WN reversible angora cardigan",
+        //     price: 120,
+        //     qty: 2,
+        //     unitPrice: 240,
+        // },
     ])
 
     const [subtotal, setSubtotal] = useState(0)
     const [total, setTotal] = useState(0)
+
+    useEffect(()=>{
+        const getCart = async ()=>{
+            try{
+                const url = "https://reborn-necessary-clothing-backend.onrender.com/api/products/get-cart"
+                const token = localStorage.getItem('token');
+                const theHeaders = {
+                  headers: {
+                    'Authorization': `Bearer ${token}`
+                    }
+                }
+                const response = await axios.get(url,theHeaders)
+                console.log(response)
+                setCart(response.data.cart)
+            }catch(error){
+                console.log(error)
+                setShowMessage(!showMessage)
+                error.message == "Network Error" ? 
+                localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"})) : null
+            }
+        }
+
+        getCart()
+    },[])
 
     useEffect(() => {
         const total = cart.reduce((acc, item) => acc + item.unitPrice, 0);
@@ -35,6 +84,10 @@ const Cart = () => {
 
     return (
         <>
+
+            {
+                message == null ? null : <Messagify type={message.type} message={message.value}/>
+            }
     
             {
                 cart.length == 0 ? 
