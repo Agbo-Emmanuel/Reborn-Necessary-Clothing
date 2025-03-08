@@ -1,14 +1,18 @@
 import React from 'react'
 import './dashboardCss/product.css'
 import { PiDotsThreeCircleDuotone } from "react-icons/pi";
+import { useNavigate } from 'react-router-dom';
 
 const Product = () => {
+
+  const navigate = useNavigate()
+
   return (
     <>
       <main className='product_list_body'>
         <section className='product_list_top'>
           <h3>All Products</h3>
-          <button>+ Add New Product</button>
+          <button onClick={()=>navigate("/add-product")}>+ Add New Product</button>
         </section>
         <section className='product_list_items_container'>
           <article className='product_item_card'>

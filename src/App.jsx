@@ -17,6 +17,7 @@ import DashboardLanding from './dashboard/DashboardLanding'
 import Product from './dashboard/Product'
 import ManageOrders from './dashboard/ManageOrders'
 import ManageUsers from './dashboard/ManageUsers'
+import AddProduct from './dashboard/AddProduct'
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path='/manage-products' element={<Product/>}/>
             <Route path='/manage-orders' element={<ManageOrders/>}/>
             <Route path='/manage-users' element={<ManageUsers/>}/>
+            <Route path='/add-product' element={<AddProduct/>}/>
           </Route>
           <Route element={<Landing/>}>
             <Route path = '/' element={<Home/>} />

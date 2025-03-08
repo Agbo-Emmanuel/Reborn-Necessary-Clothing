@@ -5,6 +5,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { MdDashboard, MdLogout, MdManageSearch } from "react-icons/md";
 import { FaUserCog, FaUserCircle } from "react-icons/fa";
 import { BiPackage } from "react-icons/bi";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 const DashboardLanding = () => {
 
@@ -26,6 +27,10 @@ const DashboardLanding = () => {
                         <MdManageSearch/>
                         Product
                     </NavLink>
+                    <NavLink to='/add-product' className={({isActive})=> isActive ? "dashboard_menu_active" : "dashboard_menu_notactive"}>
+                        <IoAddCircleOutline/>
+                        Add Product
+                    </NavLink>
                     <NavLink to='/manage-orders' className={({isActive})=> isActive ? "dashboard_menu_active" : "dashboard_menu_notactive"}>
                         <BiPackage/>
                         Orders
@@ -43,7 +48,7 @@ const DashboardLanding = () => {
             <section className='dashboard_landing_mainPage_container'>
                 <article className='dashboard_landing_header_container'>
                     <div className='dashboard_landing_header_left_container'>
-                        <button onClick={()=>navigate("/manage-products")}>+ Add New Product</button>
+                        <button onClick={()=>navigate("add-product")}>+ Add New Product</button>
                     </div>
                     <div className='dashboard_landing_header_right_container'>
                         <div className='dashboard_landing_header_profile_container'>
