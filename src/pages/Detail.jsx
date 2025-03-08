@@ -49,7 +49,7 @@ const Detail = () => {
                     <p>Free shipping</p>
                 </div>
                 <div className='detail_description_container'>
-                    <div className='avail_container'>
+                    {/* <div className='avail_container'>
                         <p>Select Color:</p>
                         <div className='color_picker_container'>
                             {
@@ -65,7 +65,7 @@ const Detail = () => {
                                 ))
                             }
                         </div>
-                    </div>
+                    </div> */}
                     <div className='avail_container size_select'>
                         <p>Size:</p>
                         <select>
@@ -75,6 +75,10 @@ const Detail = () => {
                             <option>S</option>
                             <option>M</option>
                         </select>
+                    </div>
+                    <div className='avail_container size_select'>
+                        <p>available:</p>
+                        <p>3</p>
                     </div>
                 </div>
                 <div className='detail_description_container'>
