@@ -136,3 +136,50 @@
     border-radius: 4px;
     padding: 10px;
 }
+
+.add_product_button_container{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    /* justify-content: flex-end; */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.add_product_button_container button{
+    width: max-content;
+    height: max-content;
+    padding: 12px 50px;
+    background-color: blue;
+    color: #fff;
+    font-size: 16px;
+    font-family: "Inter", serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* .add_product_button_container button:first-child{
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 255, 0.516);
+    transition: all .75s ease-in-out;
+}
+
+.add_product_button_container button:first-child:hover{
+    background-color: blue;
+} */
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+.add_product_button_icon{
+    animation: spin 1s linear infinite;
+}

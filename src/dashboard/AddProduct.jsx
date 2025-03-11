@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import "./dashboardCss/addProduct.css"
 import { RiImageAddLine } from "react-icons/ri";
+import { LiaSpinnerSolid } from "react-icons/lia";
+import axios from 'axios';
 
 const AddProduct = () => {
 
     const [productName, setProductName] = useState("")
     const [category, setCategory] = useState("")
     const [price, setPrice] = useState("")
-    const [productImage, setProductImage] = useState("")
+    const [productImage, setProductImage] = useState(null)
     const [theProductImage, setTheProductImage] = useState(null)
     const [sizes, setSizes] = useState(
         {
@@ -19,6 +21,7 @@ const AddProduct = () => {
             threeXL: 0
         }
     )
+    const [loading, setLoading] = useState(false)
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -28,6 +31,32 @@ const AddProduct = () => {
             setTheProductImage(file);
         }
     };
+
+    const changeSizes = (e)=>{
+        const {name, value} = e.target
+        setSizes({...sizes, [name]: value})
+    }
+
+    const addProduct = async ()=>{
+        const url = "https://reborn-necessary-clothing-backend.onrender.com/api/products/create-product"
+        const formData = new FormData();
+            formData.append('productName', productName);
+            formData.append('category', category);
+            formData.append('price', price);
+            formData.append('sizes', sizes);
+            formData.append('image', theProductImage);
+
+        try{
+            setLoading(true)
+            const response = await axios.post(url, formData)
+            setLoading(false)
+            console.log(response)
+
+        }catch(error){
+            setLoading(false)
+            console.log(error)
+        }
+    }
 
   return (
     <>
@@ -73,29 +102,66 @@ const AddProduct = () => {
                         <div className='add_product_sizes_container'>
                             <div className='add_product_sizes_item_container'>
                                 <p>S:</p>
-                                <input type='number' name='S' value={sizes.S}/>
+                                <input 
+                                    type='number' 
+                                    name='S'
+                                    value={sizes.S}
+                                    onChange={(e)=>changeSizes(e)}
+                                />
                             </div>
                             <div className='add_product_sizes_item_container'>
                                 <p>M:</p>
-                                <input type='number' name='M' value={sizes.M}/>
+                                <input 
+                                    type='number' 
+                                    name='M'
+                                    value={sizes.M}
+                                    onChange={(e)=>changeSizes(e)}
+                                />
                             </div>
                             <div className='add_product_sizes_item_container'>
                                 <p>L:</p>
-                                <input type='number' name='L' value={sizes.L}/>
+                                <input 
+                                    type='number' 
+                                    name='L'
+                                    value={sizes.L}
+                                    onChange={(e)=>changeSizes(e)}
+                                />
                             </div>
                             <div className='add_product_sizes_item_container'>
                                 <p>XL:</p>
-                                <input type='number' name='XL' value={sizes.XL}/>
+                                <input 
+                                    type='number' 
+                                    name='XL' 
+                                    value={sizes.XL}
+                                    onChange={(e)=>changeSizes(e)}
+                                />
                             </div>
                             <div className='add_product_sizes_item_container'>
                                 <p>2XL:</p>
-                                <input type='number' name='twoXl' value={sizes.twoXL}/>
+                                <input 
+                                    type='number' 
+                                    name='twoXL' 
+                                    value={sizes.twoXL}
+                                    onChange={(e)=>changeSizes(e)}
+                                />
                             </div>
                             <div className='add_product_sizes_item_container'>
                                 <p>3XL:</p>
-                                <input type='number' name='threeXL' value={sizes.threeXL}/>
+                                <input 
+                                    type='number' 
+                                    name='threeXL' 
+                                    value={sizes.threeXL}
+                                    onChange={(e)=>changeSizes(e)}
+                                />
                             </div>
                         </div>
+                    </div>
+                    <div className='add_product_button_container'>
+                        <button onClick={addProduct}>
+                            {
+                                loading ? <LiaSpinnerSolid className='add_product_button_icon'/> : "Add"
+                            }
+                        </button>
                     </div>
                 </div>
             </div>

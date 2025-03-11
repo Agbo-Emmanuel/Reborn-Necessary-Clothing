@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import Messagify from '../../components/Messagify';
 import axios from 'axios';
+import { LiaSpinnerSolid } from "react-icons/lia";
 
 const Login = () => {
 
@@ -61,12 +62,12 @@ const Login = () => {
             const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/login"
             const body = {email: values.email, password: values.password}
             const response = await axios.post(url, body)
-            console.log(response)
+            console.log(response.data.isAdmin)
+            response.data.isAdmin == true ? navigate("/dashboard") : navigate("/");  
             setLoading(false)
             setShowMessage(!showMessage)
             localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}));
-            localStorage.setItem("token", response.data.token);
-            navigate("/");    
+            localStorage.setItem("token", response.data.token);  
         
         }catch(error){
             console.log(error)
@@ -115,10 +116,13 @@ const Login = () => {
                         </div>
                     </div>
                 </article>
-                <button type='submit'>{loading ? "loading" : "Login"}</button>
-                <article className='onboarding_bottom_text_container'>
-                    <p>Don't have an account? <span onClick={()=>navigate("/register")}>REGISTER</span></p>
-                </article>
+                <button type='submit'>{loading ? <LiaSpinnerSolid className='spinner'/> : "Login"}</button>
+                {
+                    loginType == "Admin" ? null : 
+                    <article className='onboarding_bottom_text_container'>
+                        <p>Don't have an account? <span onClick={()=>navigate("/register")}>REGISTER</span></p>
+                    </article>
+                }
             </form>
         </main>
     
