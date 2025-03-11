@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation } from "react-router-dom";
 import './onBoardingCss/onboarding.css'
 import rbnc_logo_white from '../../assets/rbnc_logo_white.png'
 import { useNavigate } from 'react-router-dom'
@@ -9,6 +10,12 @@ import axios from 'axios';
 const Login = () => {
 
     const navigate = useNavigate()
+    const location = useLocation();
+    const [loginType, setLoginType] = useState()
+
+    useEffect(()=>{
+        location.pathname.includes("admin") ? setLoginType("Admin") : setLoginType("Back")
+    },[])
 
         const [showMessage, setShowMessage] = useState(false)
         const [message, setMessage] = useState(() => {
@@ -80,7 +87,7 @@ const Login = () => {
                     <img src={rbnc_logo_white} alt='logo'/>
                 </article>
                 <article className='onboarding_top_text_container'>
-                    <h3>Welcome Back!</h3>
+                    <h3>Welcome {loginType}</h3>
                     <p>Type in your email and password to login</p>
                 </article>
                 <article className='onboarding_input_body'>
