@@ -11,6 +11,11 @@ const DashboardLanding = () => {
 
     const navigate = useNavigate()
 
+    const logout = ()=>{
+        localStorage.removeItem("token")
+        navigate("/login")
+    }
+
   return (
     <>
         <main className='dashboard_landing_body'>
@@ -39,7 +44,7 @@ const DashboardLanding = () => {
                         <FaUserCog/>
                         User
                     </NavLink>
-                    <div className='dashboard_landing_menu_logout_container'>
+                    <div className='dashboard_landing_menu_logout_container' onClick={logout}>
                         <MdLogout/>
                         Logout
                     </div>

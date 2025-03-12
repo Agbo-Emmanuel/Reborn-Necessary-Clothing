@@ -40,7 +40,7 @@ const Orders = () => {
     useEffect(()=>{
         const getOrder = async ()=>{
             try{
-                const url = "https://reborn-necessary-clothing-backend.onrender.com/api/products/get-order"
+                const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-order"
                 const token = localStorage.getItem('token');
                 const theHeaders = {
                   headers: {

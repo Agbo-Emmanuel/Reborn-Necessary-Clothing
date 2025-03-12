@@ -1,10 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./dashboardCss/addProduct.css"
 import { RiImageAddLine } from "react-icons/ri";
 import { LiaSpinnerSolid } from "react-icons/lia";
 import axios from 'axios';
+import Messagify from '../components/Messagify';
+import { useNavigate } from 'react-router-dom';
 
 const AddProduct = () => {
+
+    const navigate = useNavigate()
+    const [showMessage, setShowMessage] = useState(false)
+    const [message, setMessage] = useState(() => {
+        const storedMessage = localStorage.getItem("message");
+        return storedMessage ? JSON.parse(storedMessage) : null;
+    });
+    
+    useEffect(() => {
+        const handleStorageChange = () => {
+        const storedMessage = localStorage.getItem("message");
+        if (storedMessage) {
+            setMessage(JSON.parse(storedMessage));
+        } else {
+            setMessage(null);
+        }
+        };
+    
+        setTimeout(() => {
+        localStorage.removeItem("message");
+        setMessage(null); // Clear the state
+        }, 5000);
+    
+        handleStorageChange()
+    }, [showMessage]);
 
     const [productName, setProductName] = useState("")
     const [category, setCategory] = useState("")
@@ -43,7 +70,7 @@ const AddProduct = () => {
             formData.append('productName', productName);
             formData.append('category', category);
             formData.append('price', price);
-            formData.append('sizes', sizes);
+            formData.append('sizes', JSON.stringify(sizes))
             formData.append('image', theProductImage);
 
         try{
@@ -51,15 +78,23 @@ const AddProduct = () => {
             const response = await axios.post(url, formData)
             setLoading(false)
             console.log(response)
+            setShowMessage(!showMessage)
+            localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}));
+            navigate("/dashboard")
 
         }catch(error){
             setLoading(false)
             console.log(error)
+            setShowMessage(!showMessage)
+            localStorage.setItem("message", JSON.stringify({type: "error", value: error.response.data.message}));
         }
     }
 
   return (
     <>
+        {
+            message == null ? null : <Messagify type={message.type} message={message.value}/>
+        }
         <div className='add_product_body'>
             <div className='add_product_top_container'>
                 <h2>Product Information</h2>

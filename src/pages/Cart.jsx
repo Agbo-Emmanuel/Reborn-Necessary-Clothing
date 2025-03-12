@@ -50,7 +50,7 @@ const Cart = () => {
     useEffect(()=>{
         const getCart = async ()=>{
             try{
-                const url = "https://reborn-necessary-clothing-backend.onrender.com/api/products/get-cart"
+                const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-cart"
                 const token = localStorage.getItem('token');
                 const theHeaders = {
                   headers: {

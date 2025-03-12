@@ -1,12 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './dashboardCss/dashboard.css'
 import { MdSell, MdAttachMoney, MdGroups, MdKeyboardArrowDown  } from "react-icons/md";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import OrderList from '../components/OrderList';
+import Messagify from '../components/Messagify';
 
 const Dashboard = () => {
+
+  const [showMessage, setShowMessage] = useState(false)
+  const [message, setMessage] = useState(() => {
+    const storedMessage = localStorage.getItem("message");
+    return storedMessage ? JSON.parse(storedMessage) : null;
+  });
+      
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedMessage = localStorage.getItem("message");
+      if (storedMessage) {
+        setMessage(JSON.parse(storedMessage));
+      } else {
+        setMessage(null);
+      }
+    };
+      
+    setTimeout(() => {
+    localStorage.removeItem("message");
+    setMessage(null); // Clear the state
+    }, 5000);
+      
+    handleStorageChange()
+  }, [showMessage]);
+
   return (
     <>
+      {
+        message == null ? null : <Messagify type={message.type} message={message.value}/>
+      }
       <main className='dashboard_body'>
         <section className='dashboard_details_body'>
           <article className='dashboard_details_card'>

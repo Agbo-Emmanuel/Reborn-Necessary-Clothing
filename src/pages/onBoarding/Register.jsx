@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import axios from 'axios';
 import Messagify from '../../components/Messagify';
+import { LiaSpinnerSolid } from "react-icons/lia";
 
 const Register = () => {
 
@@ -117,7 +118,7 @@ const Register = () => {
               </div>
             </div>
           </article>
-          <button type='submit'>{loading ? "loading" : "Register"}</button>
+          <button type='submit'>{loading ? <LiaSpinnerSolid className='spinner'/> : "Register"}</button>
           <article className='onboarding_bottom_text_container'>
             <p>Already have an account? <span onClick={()=>navigate("/login")}>LOGIN</span></p>
           </article>
