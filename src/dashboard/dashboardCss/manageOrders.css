@@ -1,0 +1,29 @@
+.manage_orders_body{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+}
+
+.manage_orders_body h3{
+    width: max-content;
+    height: max-content;
+    color: lightgrey;
+    font-size: 18px;
+    font-family: "Inter", serif;
+    font-weight: 400;
+}
+
+.order_list_container{
+    width: 100%;
+    height: max-content;
+}
+
+@media screen and (max-width: 768px){
+    .manage_orders_body{
+        padding: 16px;
+    }
+}

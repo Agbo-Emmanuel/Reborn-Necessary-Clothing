@@ -22,15 +22,6 @@
     font-weight: 400;
 }
 
-.product_list_top p{
-    width: max-content;
-    height: max-content;
-    color: lightgrey;
-    font-size: 14px;
-    font-family: "Inter", serif;
-    font-weight: 400;
-}
-
 .product_list_top button{
     width: max-content;
     height: max-content;
@@ -49,6 +40,15 @@
 .product_list_top button:hover{
     background-color: #004db397;
     color: #fff;
+}
+
+.dashboard_loading_p{
+    width: max-content;
+    height: max-content;
+    color: lightgrey;
+    font-size: 14px;
+    font-family: "Inter", serif;
+    font-weight: 400;
 }
 
 .product_list_items_container{
@@ -145,4 +145,15 @@
     font-size: 14px;
     font-family: "Inter", serif;
     font-weight: 400;
+}
+
+
+@media screen and (max-width: 768px){
+    .product_list_body{
+        padding: 16px;
+    }
+
+    .product_item_card{
+        width: 100%;
+    }
 }

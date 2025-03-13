@@ -29,6 +29,8 @@
 .manage_users_table_section{
     width: 100%;
     height: max-content;
+    overflow: auto;
+    /* background-color: yellow; */
 }
 
 .manage_users_table_section table{
@@ -67,13 +69,13 @@
 }
 
 .manage_users_table_section th:nth-child(1), .manage_users_table_section td:nth-child(1) {
-    width: 10px;
+    width: 100px;
     padding: 20px 10px;
     /* background-color: blue; */
 }
 
 .manage_users_table_section th:nth-child(2), .manage_users_table_section td:nth-child(2) {
-    width: 100px;
+    width: 300px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -81,7 +83,7 @@
 }
 
 .manage_users_table_section th:nth-child(3), .manage_users_table_section td:nth-child(3) {
-    width: 100px;
+    width: 300px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -89,7 +91,7 @@
 }
 
 .manage_users_table_section th:nth-child(4), .manage_users_table_section td:nth-child(4) {
-    width: 100px;
+    width: 300px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -110,6 +112,25 @@
     cursor: pointer;
 }
 
+.manage_users_table_section::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+.manage_users_table_section::-webkit-scrollbar-track {
+    background: lightgrey;
+    border-radius: 10px;
+}
+
+.manage_users_table_section::-webkit-scrollbar-thumb {
+    background: #2379FF;
+    border-radius: 10px;
+}
+
+.manage_users_table_section::-webkit-scrollbar-thumb:hover {
+    background: grey;
+}
+
 @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -121,4 +142,12 @@
 
 .td_button_icon{
     animation: spin 1s linear infinite;
+}
+
+
+
+@media screen and (max-width: 768px){
+    .manage_users_body{
+        padding: 16px;
+    }
 }

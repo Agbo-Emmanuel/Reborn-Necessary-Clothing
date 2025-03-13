@@ -183,3 +183,19 @@
 .add_product_button_icon{
     animation: spin 1s linear infinite;
 }
+
+
+
+@media screen and (max-width: 768px) {
+    .add_product_body{
+        padding: 16px;
+    }
+
+    .add_product_image_container{
+        width: 100%;
+    }
+    
+    .add_product_image_icon{
+        transform: translate(150px, 120px);;
+    }
+}

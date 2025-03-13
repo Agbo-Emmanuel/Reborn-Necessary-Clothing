@@ -72,6 +72,9 @@ const Product = () => {
           }
           <button onClick={()=>navigate("/add-product")}>+ Add New Product</button>
         </section>
+        {
+          loading ? <p className='dashboard_loading_p'>retreiving...</p> : null
+        }
         <section className='product_list_items_container'>
           {
             products.map((e)=>(

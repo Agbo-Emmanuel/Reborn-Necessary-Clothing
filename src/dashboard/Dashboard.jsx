@@ -4,8 +4,12 @@ import { MdSell, MdAttachMoney, MdGroups, MdKeyboardArrowDown  } from "react-ico
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import OrderList from '../components/OrderList';
 import Messagify from '../components/Messagify';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+
+  const navigate = useNavigate()
 
   const [showMessage, setShowMessage] = useState(false)
   const [message, setMessage] = useState(() => {
@@ -30,6 +34,22 @@ const Dashboard = () => {
       
     handleStorageChange()
   }, [showMessage]);
+
+  const [adminDetails, setAdminDetails] = useState()
+
+  useEffect(()=>{
+    const getAdminDetails = async ()=>{
+      try{
+        const response = await axios.get("https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-admin-details")
+        console.log(response)
+        setAdminDetails(response.data)
+      }catch(error){
+        console.log(error);
+      }
+    }
+
+    getAdminDetails()
+  },[])
 
   return (
     <>
@@ -71,14 +91,14 @@ const Dashboard = () => {
             </div>
             <div className='dashboard_details_text_container'>
               <p>Total Users</p>
-              <h3>300</h3>
+              <h3>{adminDetails?.totalUsers}</h3>
             </div>
           </article>
         </section>
         <section className='dashboard_recent_orders_section'>
           <article className='dashboard_recent_orders_top'>
             <h3>Recent orders</h3>
-            <p>View all <MdKeyboardArrowDown size={18}/></p>
+            <p onClick={()=>navigate("/manage-orders")}>View all <MdKeyboardArrowDown size={18}/></p>
           </article>
           <article className='dashboard_recent_orders_body'>
             <OrderList/>
