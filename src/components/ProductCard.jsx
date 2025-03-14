@@ -14,6 +14,7 @@ import product_image11 from '../assets/product_image11.jpg'
 import product_image12 from '../assets/product_image12.png'
 import product_image13 from '../assets/product_image13.jpg'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export const ProductCard = ({limit, showLastFour, width}) => {
 
@@ -128,6 +129,8 @@ export const ProductCard = ({limit, showLastFour, width}) => {
 
 export const MainProductCard = ({limit, showLastFour, width})=>{
 
+    const navigate = useNavigate()
+
     const [mainProducts, setMainProducts] = useState([])
 
     useEffect(()=>{
@@ -150,7 +153,7 @@ export const MainProductCard = ({limit, showLastFour, width})=>{
         
         {
             mainProducts.map((e)=>(
-                <div key={e._id} className='product_card_body' style={width ? {width: width} : null}>
+                <div key={e._id} className='product_card_body' style={width ? {width: width} : null} onClick={()=>navigate(`/detail/${e._id}`)}>
                     <div className='product_card_image_container'>
                         <img src={e.image} alt=''/>
                     </div>

@@ -2,6 +2,13 @@
     width: 23%;
     height: max-content;
     flex-shrink: 0;
+    border: 1px solid #2377ff45;
+    border-radius: 4px;
+}
+
+.product_card_body:hover{
+    border: 1px solid #2377ffa4;
+    cursor: pointer;
 }
 
 .product_card_image_container{

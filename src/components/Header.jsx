@@ -6,6 +6,7 @@ import { IoSearchOutline, IoMenu, IoClose } from "react-icons/io5";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { FaUserLarge, FaRegUser } from "react-icons/fa6";
 import { BiPackage } from "react-icons/bi";
+import axios from 'axios';
 
 const Header = () => {
 
@@ -14,6 +15,28 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [showAccntMenu, setShowAccntMenu] = useState(false)
   const [userActive, setUserActive] = useState(false)
+  const [cartLength, setCartLength] = useState(0)
+
+  useEffect(()=>{
+    const getCartLength = async ()=>{
+      try{
+        const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-cart"
+        const token = localStorage.getItem('token');
+        const theHeaders = {
+          headers: {
+            'Authorization': `Bearer ${token}`
+            }
+        }
+        const response = await axios.get(url,theHeaders)
+        console.log(response)
+        setCartLength(response.data.cart.length)
+    }catch(error){
+        console.log(error)
+    }
+    }
+
+    getCartLength()
+  },[])
 
   const activeToken = localStorage.getItem("token")
 
@@ -52,7 +75,12 @@ const Header = () => {
         </div>
         <div className='header_account_container'>
           <IoSearchOutline cursor="pointer"/>
-          <MdOutlineShoppingBag className='cart_icon showCart' cursor="pointer" onClick={()=>navigate("/cart")}/>
+          <div className='cart_icon_container'>
+            {
+              cartLength == 0 ? null : <p>{cartLength}</p>
+            }
+            <MdOutlineShoppingBag className='cart_icon showCart' cursor="pointer" onClick={()=>navigate("/cart")}/>
+          </div>
           <FaUserLarge className='cart_icon' cursor="pointer" onClick={()=>setShowAccntMenu(!showAccntMenu)}/>
           {
             showAccntMenu == true ? 

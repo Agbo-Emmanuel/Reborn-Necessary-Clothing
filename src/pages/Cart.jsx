@@ -59,7 +59,7 @@ const Cart = () => {
                 }
                 const response = await axios.get(url,theHeaders)
                 console.log(response)
-                setCart(response.data.cart)
+                setCart(response.data.cart.reverse())
             }catch(error){
                 console.log(error)
                 setShowMessage(!showMessage)
@@ -107,6 +107,7 @@ const Cart = () => {
                                     <tr>
                                         <th>PRODUCT</th>
                                         <th>PRICE</th>
+                                        <th>size</th>
                                         <th>QTY</th>
                                         <th>UNIT PRICE</th>
                                     </tr>
@@ -129,12 +130,14 @@ const Cart = () => {
                                                     </div>
                                                 </td>
                                                 <td>${e.price}</td>
+                                                <td>{e.size}</td>
                                                 <td>
-                                                    <div className='cart_details_qty_container'>
+                                                    {e.qty}
+                                                    {/* <div className='cart_details_qty_container'>
                                                         <button>-</button>
                                                         <p>{e.qty}</p>
                                                         <button>+</button>
-                                                    </div>
+                                                    </div> */}
                                                 </td>
                                                 <td>${e.unitPrice}</td>
                                             </tr>
