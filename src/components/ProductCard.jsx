@@ -132,15 +132,19 @@ export const MainProductCard = ({limit, showLastFour, width})=>{
     const navigate = useNavigate()
 
     const [mainProducts, setMainProducts] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(()=>{
         const getAllProducts = async ()=>{
         try{
+            setLoading(true)
             const url = "https://reborn-necessary-clothing-backend.onrender.com/api/products/get-all-products"
             const response = await axios.get(url)
+            setLoading(false)
             console.log(response)
             setMainProducts(response.data.allProducts)
         }catch(error){
+            setLoading(false)
             console.log(error)
         }
         }
@@ -150,19 +154,23 @@ export const MainProductCard = ({limit, showLastFour, width})=>{
 
     return(
         <>
-        
         {
-            mainProducts.map((e)=>(
-                <div key={e._id} className='product_card_body' style={width ? {width: width} : null} onClick={()=>navigate(`/detail/${e._id}`)}>
-                    <div className='product_card_image_container'>
-                        <img src={e.image} alt=''/>
-                    </div>
-                    <div className='product_card_text_container'>
-                        <p>{e.productName}</p>
-                        <h6>${e.price}</h6>
-                    </div>
+            loading ? 
+                <div className='product_loading'>
+                    <p>Retrieving Products...</p>
                 </div>
-            ))
+            : 
+                mainProducts.map((e)=>(
+                    <div key={e._id} className='product_card_body' style={width ? {width: width} : null} onClick={()=>navigate(`/detail/${e._id}`)}>
+                        <div className='product_card_image_container'>
+                            <img src={e.image} alt=''/>
+                        </div>
+                        <div className='product_card_text_container'>
+                            <p>{e.productName}</p>
+                            <h6>${e.price}</h6>
+                        </div>
+                    </div>
+                ))
         }
 
         </>

@@ -1,3 +1,18 @@
+.product_loading{
+    width: 100%;
+    height: max-content;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.product_loading p{
+    color: #fff;
+    font-size: 20px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 500;
+}
+
 .product_card_body{
     width: 23%;
     height: max-content;
