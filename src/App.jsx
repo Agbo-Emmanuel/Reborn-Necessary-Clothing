@@ -40,7 +40,7 @@ const App = () => {
             <Route path='/product-category/:category' element={<ProductCategory/>}/>
             <Route path='/designer-mood' element={<NewArrivals/>}/>
             <Route path='/cart' element={<Cart/>}/>
-            <Route path='/checkout' element={<Checkout/>}/>
+            <Route path='/checkout/:orderId' element={<Checkout/>}/>
             <Route element={<AccountLanding/>}>
               <Route path='/account' element={<Account/>}/>
               <Route path='/orders' element={<Orders/>}/>

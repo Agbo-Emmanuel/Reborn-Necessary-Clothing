@@ -5,6 +5,7 @@ import { BsFillCartXFill } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Messagify from '../components/Messagify';
+import { LiaSpinnerSolid } from "react-icons/lia";
 
 const Cart = () => {
 
@@ -35,6 +36,7 @@ const Cart = () => {
 
     const [cart, setCart] = useState([])
     const [cartLoading, setCartLoading] = useState(false)
+    const [checkoutLoading, setCheckoutLoading] = useState(false)
 
     const [subtotal, setSubtotal] = useState(0)
     const [total, setTotal] = useState(0)
@@ -91,6 +93,33 @@ const Cart = () => {
             localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}))
 
         }catch(error){
+            console.log(error)
+            setShowMessage(!showMessage)
+            error.message == "Network Error" ? 
+            localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"})) : null
+        }
+    }
+
+
+    const checkout = async ()=>{
+        try{
+            setCheckoutLoading(true)
+            const url = "https://reborn-necessary-clothing-backend.onrender.com/api/products/checkout"
+            const token = localStorage.getItem('token');
+            const theHeaders = {
+                headers: {
+                'Authorization': `Bearer ${token}`
+                }
+            }
+            const body = { subTotal: subtotal, total: total}
+
+            const response = await axios.post(url, body, theHeaders)
+            setCheckoutLoading(false)
+            console.log(response)
+            navigate(`/checkout/${response.data.orderId}`)
+
+        }catch(error){
+            setCheckoutLoading(false)
             console.log(error)
             setShowMessage(!showMessage)
             error.message == "Network Error" ? 
@@ -183,7 +212,7 @@ const Cart = () => {
                                     <p>TOTAL</p>
                                     <p>${total}</p>
                                 </article>
-                                <button onClick={()=>navigate("/checkout")}>Checkout</button>
+                                <button onClick={checkout}>{checkoutLoading ? <LiaSpinnerSolid className='checkoutSpinner'/> : "Checkout"}</button>
                             </section>
                         </main>
             }

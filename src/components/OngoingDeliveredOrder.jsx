@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './componentCss/deliverytype.css'
 import { LuPackageOpen } from "react-icons/lu";
 import { useNavigate } from 'react-router-dom';
@@ -7,11 +7,13 @@ const OngoingDeliveredOrder = ({theOrder}) => {
 
     const navigate = useNavigate()
 
+    const [ongoingOrders, setOngoingOrders] = useState([{}])
+
   return (
     <>
         <main className='deliverytype_order_body'>
             {
-                theOrder.length == 0 ? 
+                ongoingOrders.length == 0 ? 
                     <section className='empty_order_detail_container'>
                         <div className='empty_order_icon'>
                             <LuPackageOpen/>

@@ -296,6 +296,20 @@ th:nth-child(5), td:nth-child(5) {
     border-radius: 6px;
 }
 
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+.checkoutSpinner{
+    color: #fff;
+    font-size: 16px;
+    animation: spin 1s linear infinite;
+}
 
 
 

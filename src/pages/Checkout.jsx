@@ -2,9 +2,40 @@ import React, { useEffect, useState } from 'react'
 import './pagesCss/checkout.css'
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { LiaSpinnerSolid } from "react-icons/lia";
+import Messagify from '../components/Messagify';
 
 const Checkout = () => {
 
+    const navigate = useNavigate()
+
+    const [showMessage, setShowMessage] = useState(false)
+    const [message, setMessage] = useState(() => {
+        const storedMessage = localStorage.getItem("message");
+        return storedMessage ? JSON.parse(storedMessage) : null;
+    });
+        
+    useEffect(() => {
+        const handleStorageChange = () => {
+        const storedMessage = localStorage.getItem("message");
+        if (storedMessage) {
+            setMessage(JSON.parse(storedMessage));
+        } else {
+            setMessage(null);
+        }
+        };
+        
+        setTimeout(() => {
+        localStorage.removeItem("message");
+        setMessage(null); // Clear the state
+        }, 5000);
+        
+        handleStorageChange()
+    }, [showMessage]);
+
+    const {orderId} = useParams();
     const [address, setAddress] = useState([])
     const [viewAddress, setViewAddress] = useState(false)
     const [selectDelivery, setSelectDelivery] = useState(false)
@@ -17,6 +48,22 @@ const Checkout = () => {
     const [selectCard, setSelectCard] = useState(false)
     const [selectOnDelivery, setSelectOnDelivery] = useState(true)
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("Pay on Delivery")
+    const [checkoutOrder, setCheckoutOrder] = useState({})
+    const [deliverTo, setDeliverTo]= useState("")
+    const [deliveryDetails, setDeliveryDetails] = useState({
+        firstName: "",
+        lastName: "",
+        phoneNumber: "",
+        addPhoneNumber: "",
+        address: "",
+        addInformation: "",
+    })
+    const [confirmOrderLoading, setConfirmOrderLoading] = useState(false)
+
+    const deliveryDetailInputChange = (e)=>{
+        const {name, value} = e.target
+        setDeliveryDetails({...deliveryDetails, [name]: value})
+    }
 
     useEffect(()=>{
         address.length == 0 ? setViewAddress(false) : setViewAddress(true)
@@ -42,6 +89,7 @@ const Checkout = () => {
 
     const selectDeliveryOption = (dev)=>{
         setSelectDelivery(!selectDelivery)
+        setDeliverTo("Deliver to Customer Address")
     }
 
     const selectPaymentMethodNow = (method)=>{
@@ -64,8 +112,52 @@ const Checkout = () => {
         }
     }
 
+    useEffect(()=>{
+        const getCheckoutOrder = async ()=>{
+            console.log(orderId)
+            const url = `https://reborn-necessary-clothing-backend.onrender.com/api/products/get-checkout-order/${orderId}`
+            try{
+                const response = await axios.get(url)
+                console.log(response)
+                setCheckoutOrder(response.data.checkOrder)
+            }catch(error){
+                console.log(error)
+                setShowMessage(!showMessage)
+                error.message == "Network Error" ? 
+                localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"})) : null
+            }
+        }
+
+        getCheckoutOrder()
+    },[])
+
+    const confirmOrder = async ()=>{
+        try{
+            setConfirmOrderLoading(true)
+            const url = `https://reborn-necessary-clothing-backend.onrender.com/api/products/confirm-order/${orderId}`
+            const body = { deliveryDetails: deliveryDetails, deliverTo: deliverTo, paymentMethod: selectedPaymentMethod }
+            const response = await axios.patch(url,body) 
+            setConfirmOrderLoading(false)
+            console.log(response)
+            setShowMessage(!showMessage)
+            localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}))
+            navigate("/")
+
+        }catch(error){
+            setConfirmOrderLoading(false)
+            console.log(error)
+            setShowMessage(!showMessage)
+            error.message == "Network Error" ? 
+            localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"})) : null
+        }
+    }
+
+
   return (
     <>
+        {
+            message == null ? null : <Messagify type={message.type} message={message.value}/>
+        }
         <main className='checkout_body'>
             <section className='checkout_details_section'>
                 <article className='checkout_address_body'>
@@ -90,39 +182,57 @@ const Checkout = () => {
                                     <input
                                         type='text'
                                         placeholder='First Name'
+                                        name='firstName'
+                                        value={deliveryDetails.firstName}
+                                        onChange={(e)=>deliveryDetailInputChange(e)}
                                     />
                                     <input
                                         type='text'
                                         placeholder='Last Name'
+                                        name='lastName'
+                                        value={deliveryDetails.lastName}
+                                        onChange={(e)=>deliveryDetailInputChange(e)}
                                     />
                                 </div>
                                 <div className='checkout_address_details_input_container'>
                                     <input
                                         type='text'
                                         placeholder='Phone Number'
+                                        name='phoneNumber'
+                                        value={deliveryDetails.phoneNumber}
+                                        onChange={(e)=>deliveryDetailInputChange(e)}
                                     />
                                     <input
                                         type='text'
                                         placeholder='Additional Phone Number'
+                                        name='addPhoneNumber'
+                                        value={deliveryDetails.addPhoneNumber}
+                                        onChange={(e)=>deliveryDetailInputChange(e)}
                                     />
                                 </div>
                                 <div className='checkout_address_details_input_container'>
                                     <input
                                         type='text'
                                         placeholder='Delivery Address'
+                                        name='address'
+                                        value={deliveryDetails.address}
+                                        onChange={(e)=>deliveryDetailInputChange(e)}
                                     />
                                 </div>
                                 <div className='checkout_address_details_input_container'>
                                     <input
                                         type='text'
-                                        placeholder='Additional Information'
+                                        placeholder='Additional Information(optional)'
+                                        name='addInformation'
+                                        value={deliveryDetails.addInformation}
+                                        onChange={(e)=>deliveryDetailInputChange(e)}
                                     />
                                 </div>
                             </div>
                         :
                             <div className='checkout_filled_address_details_container'>
-                                <h4>Agbo Emmanuel</h4>
-                                <p>7 taiwo street | 09169208398</p>
+                                <h4>{deliveryDetails.firstName} {deliveryDetails.lastName}</h4>
+                                <p>{deliveryDetails.address} | {deliveryDetails.phoneNumber}</p>
                             </div>
 
                     }
@@ -235,21 +345,21 @@ const Checkout = () => {
             <section className='checkout_confirm_order_section'>
                 <article className='checkout_details_container'>
                     <p>Subtotal</p>
-                    <p>$240</p>
+                    <p>${checkoutOrder?.subTotal}</p>
                 </article>
                 <article className='checkout_details_container'>
-                    <p>Delivery Fee</p>
-                    <p>$0</p>
+                    <p>Shipping free</p>
+                    {/* <p>$0</p> */}
                 </article>
                 <article className='checkout_details_container'>
                     <p>TOTAL</p>
-                    <p>$500</p>
+                    <p>${checkoutOrder?.totalAmount}</p>
                 </article>
                 <button
-                    onClick={()=>alert("weldone")} 
+                    onClick={confirmOrder} 
                     disabled = {viewAddress == true && viewDeliveryOption == true && viewPaymentMethod == true ? false : true}
                     style={viewAddress == true && viewDeliveryOption == true && viewPaymentMethod == true ? {backgroundColor: "#000"} : {backgroundColor: "lightgrey"}}
-                >Confirm order</button>
+                >{confirmOrderLoading ? <LiaSpinnerSolid className='checkoutSpinner'/> : "Confirm Order"}</button>
             </section>
         </main>
     </>
