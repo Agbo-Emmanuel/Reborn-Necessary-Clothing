@@ -15,28 +15,40 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [showAccntMenu, setShowAccntMenu] = useState(false)
   const [userActive, setUserActive] = useState(false)
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || { cart: [] })
   const [cartLength, setCartLength] = useState(0)
 
-  useEffect(()=>{
-    const getCartLength = async ()=>{
-      try{
-        const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-cart"
-        const token = localStorage.getItem('token');
-        const theHeaders = {
-          headers: {
-            'Authorization': `Bearer ${token}`
-            }
-        }
-        const response = await axios.get(url,theHeaders)
-        console.log(response)
-        setCartLength(response.data.cart.length)
-    }catch(error){
-        console.log(error)
-    }
-    }
+    useEffect(() => {
+    const updateUser = () => {
+      setUser(JSON.parse(localStorage.getItem("user")) || { cart: [] });
+    };
 
-    getCartLength()
-  },[])
+    window.addEventListener("storage", updateUser); // Listen for storage changes
+
+    return () => window.removeEventListener("storage", updateUser); // Cleanup event listener
+  }, []);
+
+
+  // useEffect(()=>{
+  //   const getCartLength = async ()=>{
+  //     try{
+  //       const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-cart"
+  //       const token = localStorage.getItem('token');
+  //       const theHeaders = {
+  //         headers: {
+  //           'Authorization': `Bearer ${token}`
+  //           }
+  //       }
+  //       const response = await axios.get(url,theHeaders)
+  //       console.log(response)
+  //       setCartLength(response.data.cart.length)
+  //   }catch(error){
+  //       console.log(error)
+  //   }
+  //   }
+
+  //   getCartLength()
+  // },[])
 
   const activeToken = localStorage.getItem("token")
 
@@ -57,6 +69,7 @@ const Header = () => {
 
   const logout = ()=>{
     localStorage.removeItem("token")
+    localStorage.removeItem("user")
     setShowAccntMenu(false)
     navigate("/login")
   }
@@ -75,11 +88,11 @@ const Header = () => {
         </div>
         <div className='header_account_container'>
           <IoSearchOutline cursor="pointer"/>
-          <div className='cart_icon_container'>
+          <div className='cart_icon_container' onClick={()=>navigate("/cart")}>
             {
-              cartLength == 0 ? null : <p>{cartLength}</p>
+              user.cart.length == 0 ? null : <p>{user.cart.length}</p>
             }
-            <MdOutlineShoppingBag className='cart_icon showCart' cursor="pointer" onClick={()=>navigate("/cart")}/>
+            <MdOutlineShoppingBag className='cart_icon showCart' cursor="pointer"/>
           </div>
           <FaUserLarge className='cart_icon' cursor="pointer" onClick={()=>setShowAccntMenu(!showAccntMenu)}/>
           {

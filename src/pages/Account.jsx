@@ -5,7 +5,7 @@ import Messagify from '../components/Messagify';
 
 const Account = () => {
 
-    const [user, setUser]= useState()
+    const [user, setUser]= useState(JSON.parse(localStorage.getItem("user")) || [])
     const [showMessage, setShowMessage] = useState(false)
     const [message, setMessage] = useState(() => {
         const storedMessage = localStorage.getItem("message");
@@ -30,29 +30,34 @@ const Account = () => {
         handleStorageChange()
     }, [showMessage]);
 
-    useEffect(()=>{
-        const getUser = async ()=>{
-            try{
-                const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-user"
-                const token = localStorage.getItem('token');
-                const theHeaders = {
-                  headers: {
-                    'Authorization': `Bearer ${token}`
-                    }
-                }
-                const response = await axios.get(url,theHeaders)
-                console.log(response)
-                setUser(response.data.user)
-            }catch(error){
-                console.log(error)
-                setShowMessage(!showMessage)
-                error.message == "Network Error" ? 
-                localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"})) : null
-            }
-        }
+    // useEffect(()=>{
+    //     const getUser = async ()=>{
+    //         try{
+    //             const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-user"
+    //             const token = localStorage.getItem('token');
+    //             const theHeaders = {
+    //               headers: {
+    //                 'Authorization': `Bearer ${token}`
+    //                 }
+    //             }
+    //             const response = await axios.get(url,theHeaders)
+    //             console.log(response)
+    //             setUser(response.data.user)
+    //         }catch(error){
+    //             console.log(error)
+    //             if(error.message == "Network Error"){
+    //                 setShowMessage(!showMessage)
+    //                 localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"}))
+    //             }else if(error.response?.data?.message == "jwt expired" ){
+    //                 setShowMessage(!showMessage)
+    //                 localStorage.setItem("message", JSON.stringify({type: "error", value: "Your session has expired. Please log in again."}))
+    //                 navigate("/login")
+    //             }
+    //         }
+    //     }
 
-        getUser()
-    },[])
+    //     getUser()
+    // },[])
 
   return (
     <>

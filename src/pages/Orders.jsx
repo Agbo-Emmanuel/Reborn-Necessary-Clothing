@@ -55,13 +55,18 @@ const Orders = () => {
                 const response = await axios.get(url,theHeaders)
                 setOrderLoading(false)
                 console.log(response)
-                setOrder(response.data.order)
+                setOrder(response.data.order.reverse())
             }catch(error){
                 setOrderLoading(false)
                 console.log(error)
-                setShowMessage(!showMessage)
-                error.message == "Network Error" ? 
-                localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"})) : null
+                if(error.message == "Network Error"){
+                    setShowMessage(!showMessage)
+                    localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"}))
+                }else if(error.response?.data?.message == "jwt expired" ){
+                    setShowMessage(!showMessage)
+                    localStorage.setItem("message", JSON.stringify({type: "error", value: "Your session has expired. Please log in again."}))
+                    navigate("/login")
+                }
             }
         }
 
@@ -73,10 +78,6 @@ const Orders = () => {
         setOneOrderDetails(oneDetails)
         setShowOneOrder(true)
     }
-
-    useEffect(() => {
-        console.log(oneOrderDetails);
-    }, [oneOrderDetails]);
 
   return (
     <>

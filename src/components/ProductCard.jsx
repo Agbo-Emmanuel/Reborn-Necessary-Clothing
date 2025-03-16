@@ -156,8 +156,13 @@ export const MainProductCard = ({limit, showLastFour, width})=>{
         <>
         {
             loading ? 
-                <div className='product_loading'>
-                    <p>Retrieving Products...</p>
+                // <div className='product_loading'>
+                //     <p>Retrieving Products...</p>
+                // </div>
+                <div className="skeleton-container">
+                    {[...Array(5)].map((_, index) => (
+                        <div key={index} className="skeleton-card"></div>
+                    ))}
                 </div>
             : 
                 mainProducts.map((e)=>(

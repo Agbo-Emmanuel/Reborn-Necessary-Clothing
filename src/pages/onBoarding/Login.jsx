@@ -66,6 +66,7 @@ const Login = () => {
             response.data.user.isAdmin == true ? navigate("/dashboard") : navigate("/");  
             setLoading(false)
             setShowMessage(!showMessage)
+            localStorage.setItem("user", JSON.stringify(response.data.user));
             localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}));
             localStorage.setItem("token", response.data.token);  
         

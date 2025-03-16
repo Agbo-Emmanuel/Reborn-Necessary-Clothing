@@ -11,6 +11,8 @@ const Dashboard = () => {
 
   const navigate = useNavigate()
 
+  const [allOrders, setAllOrders] = useState([])
+  const [orderLoading, setOrderLoading] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
   const [message, setMessage] = useState(() => {
     const storedMessage = localStorage.getItem("message");
@@ -49,6 +51,33 @@ const Dashboard = () => {
     }
 
     getAdminDetails()
+  },[])
+
+
+  useEffect(()=>{
+    const getAllOrders = async ()=>{
+      try{
+        setOrderLoading(true)
+        const response = await axios.get("https://reborn-necessary-clothing-backend.onrender.com/api/auth/get-allOrders")
+        setOrderLoading(false)
+        console.log(response)
+        setAllOrders(response.data.allOrders)
+        
+      }catch(error){
+        setOrderLoading(false)
+        console.log(error)
+        if(error.message == "Network Error"){
+          setShowMessage(!showMessage)
+          localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"}))
+        }else if(error.response?.data?.message == "jwt expired" ){
+          setShowMessage(!showMessage)
+          localStorage.setItem("message", JSON.stringify({type: "error", value: "Your session has expired. Please log in again."}))
+          navigate("/login")
+      }
+      }
+    }
+      
+    getAllOrders()
   },[])
 
   return (
@@ -101,7 +130,7 @@ const Dashboard = () => {
             <p onClick={()=>navigate("/manage-orders")}>View all <MdKeyboardArrowDown size={18}/></p>
           </article>
           <article className='dashboard_recent_orders_body'>
-            <OrderList/>
+            <OrderList loading={orderLoading} allOrders = {allOrders}/>
           </article>
         </section>
       </main>

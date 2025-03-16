@@ -1,34 +1,43 @@
 import React from 'react'
 import './componentCss/orderList.css'
-import product_image1 from '../assets/product_image1.png'
 
-const OrderList = () => {
+const OrderList = ({loading, allOrders}) => {
+
   return (
     <>
       <div className='order_list_body'>
         <table>
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Order ID</th>
-              <th>Quantity</th>
-              <th>Price</th>
+              <th>#orderID</th>
+              <th>item</th>
               <th>Status</th>
+              <th>view details</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div className='order_list_product_container'>
-                  <img src={product_image1} alt='image'/>
-                  <p>21WN reversible angora cardigan</p>
-                </div>
-              </td>
-              <td>#453645</td>
-              <td>x3</td>
-              <td>$230</td>
-              <td>delivered</td>
-            </tr>
+            {
+              loading ? 
+                <tr className='order_list_loading'>
+                  <td><button></button></td>
+                  <td><button></button></td>
+                  <td><button></button></td>
+                  <td><button></button></td>
+                </tr>
+              :
+
+              allOrders?.map((e)=>(
+                  <tr key={e._id}>
+                    <td>{e._id}</td>
+                    <td>{e.items.length}</td>
+                    <td style={{color: "#96beff"}}>{e.status}</td>
+                    <td>
+                      <button className='view_order_details_btn'>view details</button>
+                    </td>
+                  </tr>
+                ))
+            }
+
           </tbody>
         </table>
       </div>

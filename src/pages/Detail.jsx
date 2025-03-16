@@ -36,6 +36,7 @@ const Detail = () => {
 
     const {id} = useParams()
     
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || null)
     const [detail, setDetail] = useState()
     const [size, setSize] = useState("L")
     const [availableSize, setAvailableSize] = useState()
@@ -94,6 +95,11 @@ const Detail = () => {
             const body = {productId: detail._id, qty: qty, size: size}
 
             const response = await axios.post(url, body, theHeaders)
+            setUser(prevUser => ({
+                ...prevUser,
+                cart: response.data.cart
+            }));
+            localStorage.setItem("user", JSON.stringify({ ...user, cart: response.data.cart }));
             setLoading(false)
             console.log(response)
             navigate("/")
@@ -103,10 +109,17 @@ const Detail = () => {
         }catch(error){
             setLoading(false)
             console.log(error)
-            setShowMessage(!showMessage)
-            error.message == "Network Error" ? 
-            localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"})) : 
-            localStorage.setItem("message", JSON.stringify({type: "error", value: error.response.data.message}))
+            if(error.message == "Network Error"){
+                setShowMessage(!showMessage)
+                localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"}))
+            }else if(error.response?.data?.message == "jwt expired" ){
+                setShowMessage(!showMessage)
+                localStorage.setItem("message", JSON.stringify({type: "error", value: "Your session has expired. Please log in again."}))
+                navigate("/login")
+            }else{
+                setShowMessage(!showMessage)
+                localStorage.setItem("message", JSON.stringify({type: "error", value: error.response.data.message}))
+            }
         }
     }
 
