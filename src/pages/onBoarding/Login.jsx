@@ -62,8 +62,8 @@ const Login = () => {
             const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/login"
             const body = {email: values.email, password: values.password}
             const response = await axios.post(url, body)
-            console.log(response.data.isAdmin)
-            response.data.isAdmin == true ? navigate("/dashboard") : navigate("/");  
+            console.log(response)
+            response.data.user.isAdmin == true ? navigate("/dashboard") : navigate("/");  
             setLoading(false)
             setShowMessage(!showMessage)
             localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}));
