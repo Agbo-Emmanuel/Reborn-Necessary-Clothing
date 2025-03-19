@@ -144,7 +144,7 @@
     }
 
     .product_card_image_container{
-        height: 380px;
+        height: 300px;
         width: 100%;
     }
 
@@ -160,6 +160,10 @@
     .product_card_text_container p{
         font-size: 18px;
         text-align: center;
+    }
+
+    .skeleton-card{
+        width: 100%;
     }
 
 }

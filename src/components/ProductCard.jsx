@@ -127,7 +127,7 @@ export const ProductCard = ({limit, showLastFour, width}) => {
 }
 
 
-export const MainProductCard = ({limit, showLastFour, width})=>{
+export const MainProductCard = ({limit, showLastFour, width,showMessage, setShowMessage})=>{
 
     const navigate = useNavigate()
 
@@ -146,6 +146,17 @@ export const MainProductCard = ({limit, showLastFour, width})=>{
         }catch(error){
             setLoading(false)
             console.log(error)
+            if(error.message == "Network Error"){
+                setShowMessage(!showMessage)
+                localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"}))
+            }else if(error.response?.data?.message == "jwt expired" ){
+                setShowMessage(!showMessage)
+                localStorage.setItem("message", JSON.stringify({type: "error", value: "Your session has expired. Please log in again."}))
+                navigate("/login")
+            }else{
+                setShowMessage(!showMessage)
+                localStorage.setItem("message", JSON.stringify({type: "error", value: error.response.data.message}))
+            }
         }
         }
 
