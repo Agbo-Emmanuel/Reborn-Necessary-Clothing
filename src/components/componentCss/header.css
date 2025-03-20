@@ -39,6 +39,22 @@
     font-size: 18px;
     font-family: "Tenor Sans", sans-serif;
     font-weight: 400;
+    position: relative;
+}
+
+.header_nav:before{
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 4px;
+    background-color: #40BFFF;
+    bottom: -10px;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.header_nav:hover:before {
+    width: 100%;
 }
 
 .header_account_container{
