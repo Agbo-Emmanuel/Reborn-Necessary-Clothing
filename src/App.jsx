@@ -19,6 +19,7 @@ import ManageOrders from './dashboard/ManageOrders'
 import ManageUsers from './dashboard/ManageUsers'
 import AddProduct from './dashboard/AddProduct'
 import UserOrderDetails from './dashboard/UserOrderDetails'
+import ForHimNotAvailable from './pages/ForHimNotAvailable'
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
             <Route path = '/detail/:id' element={<Detail/>} />
             <Route path='/product-category/:category' element={<ProductCategory/>}/>
             <Route path='/designer-mood' element={<NewArrivals/>}/>
+            <Route path='/for-him' element={<ForHimNotAvailable/>}/>
             <Route path='/cart' element={<Cart/>}/>
             <Route path='/checkout/:orderId' element= {<Checkout/>}/>
             <Route element={<AccountLanding/>}>

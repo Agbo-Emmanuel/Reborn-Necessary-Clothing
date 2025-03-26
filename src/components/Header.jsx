@@ -83,7 +83,7 @@ const Header = () => {
         <div className='header_nav_container'>
           <Link to='/designer-mood' className='header_nav'>Designer Mood</Link>
           <Link to="/product-category/For Her" className='header_nav'>For Her</Link>
-          <Link className='header_nav'>For Him</Link>
+          <Link to='/for-him' className='header_nav'>For Him</Link>
           <Link className='header_nav'>Accessories</Link>
         </div>
         <div className='header_account_container'>
@@ -119,7 +119,7 @@ const Header = () => {
           <Link onClick={()=>setShowMenu(false)} to='/' className='mobile_header_nav'>Home</Link>
           <Link onClick={()=>setShowMenu(false)} to='/designer-mood' className='mobile_header_nav'>Designer Mood</Link>
           <Link onClick={()=>setShowMenu(false)} to="/product-category/For Her" className='mobile_header_nav'>For Her</Link>
-          <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>For Him</Link>
+          <Link onClick={()=>setShowMenu(false)}to='/for-him' className='mobile_header_nav'>For Him</Link>
           <Link onClick={()=>setShowMenu(false)} className='mobile_header_nav'>Accessories</Link>
           {/* <Link onClick={()=>setShowMenu(false)} to="/cart" className='mobile_header_nav'>Cart</Link> */}
           <div onClick={gotToAccount} to="/account" className='mobile_header_nav'>My Account</div>
