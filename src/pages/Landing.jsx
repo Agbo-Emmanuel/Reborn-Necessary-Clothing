@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import './pagesCss/landing.css'
 import Header from '../components/Header'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Footer from '../components/Footer'
 
 const Landing = () => {
+
+  const { pathname } = useLocation();
+  const landingRef = useRef(null);
+
+  useEffect(() => {
+    if (landingRef.current) {
+      landingRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [pathname]);
+
   return (
     <>
-        <div className='landing_body'>
-            <Header/>
-            <Outlet/>
-            <Footer/>
-        </div>
+      <div className='landing_body' ref={landingRef}>
+        <Header/>
+        <Outlet/>
+        <Footer/>
+      </div>
     </>
   )
 }

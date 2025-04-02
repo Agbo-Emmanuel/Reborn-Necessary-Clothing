@@ -7,19 +7,19 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 const Messagify = ({type, message}) => {
   return (
     <>
-        <div className='messagify_body'>
+        <div className='messagify_body' style={type == "error" ? {backgroundColor: "red"} : {backgroundColor: "green"}}>
             <div className='message_container'>
-                <div className='message_icon_container' style={type == "error" ? {color: "red"} : {color: "green"}}>
-                    {
-                        type == "error" ? <AiOutlineCloseCircle/> :  <FaCheckCircle/>
-                    }    
+                <div className='cancel_icon_container'>
+                    {/* <RxCross2/> */}
                 </div>
                 <p>
                     {message}
                 </p>
-                {/* <div className='cancel_icon_container'>
-                    <RxCross2/>
-                </div> */}
+                <div className='message_icon_container'>
+                    {
+                        type == "error" ? <AiOutlineCloseCircle/> :  <FaCheckCircle/>
+                    }    
+                </div>
             </div>
         </div>
     </>

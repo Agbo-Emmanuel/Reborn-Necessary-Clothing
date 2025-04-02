@@ -57,34 +57,44 @@ const Login = () => {
 
     async function login (e){
         e.preventDefault();
-        try{
-            setLoading(true)
-            const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/login"
-            const body = {email: values.email, password: values.password}
-            const response = await axios.post(url, body)
-            console.log(response)
-            response.data.user.isAdmin == true ? navigate("/dashboard") : navigate("/");  
-            setLoading(false)
+        if(!values.email){
             setShowMessage(!showMessage)
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-            localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}));
-            localStorage.setItem("token", response.data.token);  
-        
-        }catch(error){
-            console.log(error)
-            setLoading(false)
-            if(error.message == "Network Error"){
+            localStorage.setItem("message", JSON.stringify({type: "error", value: "email is required"}));
+        }else if(!values.password){
+            setShowMessage(!showMessage)
+            localStorage.setItem("message", JSON.stringify({type: "error", value: "password is required"}));
+        }
+        else {
+            try{
+                setLoading(true)
+                const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/login"
+                const body = {email: values.email, password: values.password}
+                const response = await axios.post(url, body)
+                console.log(response)
+                response.data.user.isAdmin == true ? navigate("/dashboard") : navigate("/");  
+                setLoading(false)
                 setShowMessage(!showMessage)
-                localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"}))
-            }else if(error.response?.data?.message == "jwt expired" ){
-                setShowMessage(!showMessage)
-                localStorage.setItem("message", JSON.stringify({type: "error", value: "Your session has expired. Please log in again."}))
-                navigate("/login")
-            }else{
-                setShowMessage(!showMessage)
-                localStorage.setItem("message", JSON.stringify({type: "error", value: error.response.data.message}))
+                localStorage.setItem("user", JSON.stringify(response.data.user));
+                localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}));
+                localStorage.setItem("token", response.data.token);  
+            
+            }catch(error){
+                console.log(error)
+                setLoading(false)
+                if(error.message == "Network Error"){
+                    setShowMessage(!showMessage)
+                    localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"}))
+                }else if(error.response?.data?.message == "jwt expired" ){
+                    setShowMessage(!showMessage)
+                    localStorage.setItem("message", JSON.stringify({type: "error", value: "Your session has expired. Please log in again."}))
+                    navigate("/login")
+                }else{
+                    setShowMessage(!showMessage)
+                    localStorage.setItem("message", JSON.stringify({type: "error", value: error.response.data.message}))
+                }
             }
         }
+        
     }
 
   return (

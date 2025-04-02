@@ -36,10 +36,12 @@ const Register = () => {
     }, [showMessage]);
   
     const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const [values, setValues] = useState({
       fullName: "",
       email: "",
-      password: ""
+      password: "",
+      confirmPassword: ""
     })
     const [loading, setLoading] = useState(false)
 
@@ -51,30 +53,45 @@ const Register = () => {
 
     const register = async (e)=>{
       e.preventDefault();
-      try{
-        setLoading(true)
-        const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/register"
-        const body = {fullName: values.fullName, email: values.email, password: values.password}
-        const response = await axios.post(url, body)
-        console.log(response)
-        setLoading(false)
+      if(!values.fullName){
         setShowMessage(!showMessage)
-        localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}));
-        navigate("/login");    
-
-      }catch(error){
-        console.log(error)
-        setLoading(false)
-        if(error.message == "Network Error"){
+        localStorage.setItem("message", JSON.stringify({type: "error", value: "full name is required"}));
+      }else if(!values.email){
+        setShowMessage(!showMessage)
+        localStorage.setItem("message", JSON.stringify({type: "error", value: "email is required"}));
+      }else if(!values.password){
+        setShowMessage(!showMessage)
+        localStorage.setItem("message", JSON.stringify({type: "error", value: "password is required"}));
+      }else if(values.confirmPassword != values.password){
+        setShowMessage(!showMessage)
+        localStorage.setItem("message", JSON.stringify({type: "error", value: "passwords does not match"}));
+      }
+      else{
+        try{
+          setLoading(true)
+          const url = "https://reborn-necessary-clothing-backend.onrender.com/api/auth/register"
+          const body = {fullName: values.fullName, email: values.email, password: values.password}
+          const response = await axios.post(url, body)
+          console.log(response)
+          setLoading(false)
           setShowMessage(!showMessage)
-          localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"}))
-        }else if(error.response?.data?.message == "jwt expired" ){
-          setShowMessage(!showMessage)
-          localStorage.setItem("message", JSON.stringify({type: "error", value: "Your session has expired. Please log in again."}))
-          navigate("/login")
-        }else{
-          setShowMessage(!showMessage)
-          localStorage.setItem("message", JSON.stringify({type: "error", value: error.response.data.message}))
+          localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}));
+          navigate("/login");    
+  
+        }catch(error){
+          console.log(error)
+          setLoading(false)
+          if(error.message == "Network Error"){
+            setShowMessage(!showMessage)
+            localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"}))
+          }else if(error.response?.data?.message == "jwt expired" ){
+            setShowMessage(!showMessage)
+            localStorage.setItem("message", JSON.stringify({type: "error", value: "Your session has expired. Please log in again."}))
+            navigate("/login")
+          }else{
+            setShowMessage(!showMessage)
+            localStorage.setItem("message", JSON.stringify({type: "error", value: error.response.data.message}))
+          }
         }
       }
     }
@@ -123,6 +140,20 @@ const Register = () => {
               <div className='password_eye_container' onClick={()=>setShowPassword(!showPassword)}>
                 {
                   showPassword == true ? <AiFillEyeInvisible/> : <AiFillEye/>
+                }
+              </div>
+            </div>
+            <div className='onboarding_input_container'>
+              <input
+                type= {showConfirmPassword == true ? 'text' : 'password'}
+                placeholder='Confirm your Password'
+                name='confirmPassword'
+                value={values.confirmPassword}
+                onChange={(e)=>onType(e)}
+              />
+              <div className='password_eye_container' onClick={()=>setShowConfirmPassword(!showConfirmPassword)}>
+                {
+                  showConfirmPassword == true ? <AiFillEyeInvisible/> : <AiFillEye/>
                 }
               </div>
             </div>

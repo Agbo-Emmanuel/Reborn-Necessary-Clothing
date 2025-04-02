@@ -34,7 +34,7 @@ const Cart = () => {
         handleStorageChange()
     }, [showMessage]);
 
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")) || {cart: []})
     const [cartLoading, setCartLoading] = useState(false)
     const [checkoutLoading, setCheckoutLoading] = useState(false)
 
@@ -69,7 +69,7 @@ const Cart = () => {
     // },[])
 
     useEffect(() => {
-        const total = user.cart.reduce((acc, item) => acc + item.price, 0);
+        const total = user?.cart?.reduce((acc, item) => acc + item.price, 0);
         setSubtotal(total);
         setTotal(total + 20)
     }, [user]);
@@ -152,7 +152,7 @@ const Cart = () => {
                     <div className='cartLoading'>retrieving cart item...</div> 
                 : 
 
-                    user.cart.length == 0 ? 
+                    user?.cart?.length == 0 ? 
                         <div className='cart_empty_body'>
                             <div className='cart_empty_icon_container'>
                                     <BsFillCartXFill/>
@@ -176,7 +176,7 @@ const Cart = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            user.cart.map((e)=>(
+                                            user?.cart?.map((e)=>(
                                                 <tr key={e._id}>
                                                     <td>
                                                         <div className='cart_details_product_container'>
