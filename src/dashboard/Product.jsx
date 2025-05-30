@@ -15,6 +15,8 @@ const Product = () => {
     const storedMessage = localStorage.getItem("message");
     return storedMessage ? JSON.parse(storedMessage) : null;
   });
+  const [showOption, setShowOption] = useState()
+  const [deleteLoading, setDeleteLoading] = useState(false)
               
   useEffect(() => {
     const handleStorageChange = () => {
@@ -59,6 +61,27 @@ const Product = () => {
       getAllProducts()
   },[])
 
+  const deleteProduct = async (productId)=>{
+    try{
+      setDeleteLoading(true)
+      const url = "https://reborn-necessary-clothing-backend.onrender.com/api/products/delete-product"
+      const body = {productId}
+      const response = await axios.post(url, body)
+      setDeleteLoading(false)
+      console.log(response)
+      localStorage.setItem("message", JSON.stringify({type: "success", value: response.data.message}))
+      setShowMessage(!showMessage)
+      navigate("/dashboard")
+
+    }catch(error){
+      setDeleteLoading(false)
+      console.log(error)
+      setShowMessage(!showMessage)
+      error.message == "Network Error" ? 
+      localStorage.setItem("message", JSON.stringify({type: "error", value: "Network Error, please check your internet connection"})) : null
+    }
+  }
+
   return (
     <>
       {
@@ -79,6 +102,13 @@ const Product = () => {
           {
             products.map((e)=>(
               <article key={e._id} className='product_item_card'>
+                {
+                  showOption == e._id ? 
+                    <div className='product_option_container'>
+                      <button className='delete_btn' onClick={()=>deleteProduct(e._id)}>{deleteLoading ? "..." : "Delete"}</button>
+                    </div>
+                  : null
+                }
                 <div className='product_item_card_top'>
                   <div className='product_item_card_top_left'>
                     <div className='product_item_card_image_container'>
@@ -89,7 +119,7 @@ const Product = () => {
                       <p>${e.price}</p>
                     </div>
                   </div>
-                  <div className='product_item_card_top_right'>
+                  <div className='product_item_card_top_right' onClick={()=> setShowOption(e._id)}>
                     <PiDotsThreeCircleDuotone/>
                   </div>
                 </div>
