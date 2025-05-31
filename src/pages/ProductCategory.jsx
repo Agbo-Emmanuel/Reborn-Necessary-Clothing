@@ -33,8 +33,8 @@ const ProductCategory = () => {
                 <section className='aside_category_container'>
                     <h2>Hot Deals</h2>
                     {
-                        categories.map((item)=>(
-                            <div className='aside_category_link'>
+                        categories.map((item, index)=>(
+                            <div key={index} className='aside_category_link'>
                                 <p>{item.category}</p>
                                 <p>({item.no})</p>
                             </div>
