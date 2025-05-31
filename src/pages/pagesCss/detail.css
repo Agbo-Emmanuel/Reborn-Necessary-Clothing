@@ -9,13 +9,47 @@
 
 .detail_image_section{
     width: 32%;
-    height: 500px;
     /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail_image_main_display{
+    width: 100%;
+    height: 500px;
     border-radius: 4px;
     border: 1px solid rgba(201, 199, 199, 0.587);
 }
 
-.detail_image_section img{
+.detail_image_main_display img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.detail_image_sub_display_container{
+    width: 100%;
+    height: 100px;
+    /* background-color: blue; */
+    overflow-x: auto; /* enable horizontal scrolling */
+    overflow-y: hidden; /* prevent vertical scroll */
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap; /* this is important! */
+    scroll-behavior: smooth;
+}
+
+.detail_image_sub_display{
+    flex: 0 0 auto;
+    width: 100px;
+    height: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.detail_image_sub_display img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -26,6 +60,27 @@
     width: 64%;
     height: max-content;
     /* background-color: green; */
+}
+
+/* WebKit scrollbar customization */
+.detail_image_sub_display_container::-webkit-scrollbar {
+    height: 6px; /* thickness of the scrollbar */
+}
+
+.detail_image_sub_display_container::-webkit-scrollbar-track {
+    background: #ccc; /* scrollbar background */
+    border-radius: 10px;
+}
+
+.detail_image_sub_display_container::-webkit-scrollbar-thumb {
+    background-color: blue; /* thumb (the scroll handle) */
+    border-radius: 10px;
+    border: 2px solid transparent; /* optional border for spacing */
+    background-clip: content-box;
+}
+
+.detail_image_sub_display_container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
 }
 
 .detail_description_container{
@@ -194,7 +249,20 @@
 
     .detail_image_section{
         width: 100%;
-        height: 400px;
+    }
+
+    .detail_image_main_display{
+        width: 100%;
+        height: 400px
+    }
+
+    .detail_image_sub_display_container{
+        height: 80px;
+        gap: 10px;
+    }
+
+    .detail_image_sub_display{
+        width: 80px;
     }
 
     .detail_description_section{

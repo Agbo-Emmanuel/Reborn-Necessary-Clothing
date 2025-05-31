@@ -179,7 +179,7 @@ export const MainProductCard = ({limit, showLastFour, width,showMessage, setShow
                 mainProducts.map((e)=>(
                     <div key={e._id} className='product_card_body' style={width ? {width: width} : null} onClick={()=>navigate(`/detail/${e._id}`)}>
                         <div className='product_card_image_container'>
-                            <img src={e.image} alt=''/>
+                            <img src={e.images[0]} alt=''/>
                         </div>
                         <div className='product_card_text_container'>
                             <p>{e.productName}</p>

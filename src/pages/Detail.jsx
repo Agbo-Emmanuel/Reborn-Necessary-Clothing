@@ -42,6 +42,7 @@ const Detail = () => {
     const [availableSize, setAvailableSize] = useState()
     const [qty, setQty] = useState(0)
     const [loading, setLoading] = useState(false)
+    const [displayImage, setDisplayImage] = useState(null)
 
     useEffect(()=>{
         const getProduct = async ()=>{
@@ -131,7 +132,21 @@ const Detail = () => {
         }
         <div className='detail_body'>
             <div className='detail_image_section'>
-                <img src={detail?.image} alt='img'/>
+                <div className='detail_image_main_display'>
+                    <img src={!displayImage ? detail?.images[0] : displayImage} alt='img'/>
+                </div>
+                <div className='detail_image_sub_display_container'>
+                    {
+                        detail?.images.map((item, index)=>(
+                            <div 
+                                key={index} 
+                                className='detail_image_sub_display' 
+                                onClick={()=>setDisplayImage(item)}>
+                                <img src={item} alt=''/>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
             <div className='detail_description_section'>
                 <div className='detail_description_container'>

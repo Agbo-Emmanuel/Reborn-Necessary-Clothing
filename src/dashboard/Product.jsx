@@ -112,7 +112,7 @@ const Product = () => {
                 <div className='product_item_card_top'>
                   <div className='product_item_card_top_left'>
                     <div className='product_item_card_image_container'>
-                      <img src={e.image} alt=''/>
+                      <img src={e.images[0]} alt=''/>
                     </div>
                     <div className='product_item_card_top_text_container'>
                       <h3>{e.productName}</h3>

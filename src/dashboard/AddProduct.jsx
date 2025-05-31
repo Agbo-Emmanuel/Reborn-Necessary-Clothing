@@ -36,8 +36,8 @@ const AddProduct = () => {
     const [productName, setProductName] = useState("")
     const [category, setCategory] = useState("")
     const [price, setPrice] = useState("")
-    const [productImage, setProductImage] = useState(null)
-    const [theProductImage, setTheProductImage] = useState(null)
+    const [previewProductImage, setPreviewProductImage] = useState(new Array(4).fill(null))
+    const [ProductImages, setProductImages] = useState(new Array(4).fill(null))
     const [sizes, setSizes] = useState(
         {
             S: 0,
@@ -50,13 +50,25 @@ const AddProduct = () => {
     )
     const [loading, setLoading] = useState(false)
 
-    const handleFileChange = (e) => {
+    const handleFileChange = (e, index) => {
         const file = e.target.files[0];
-        if (file) {
-            const imageUrl = URL.createObjectURL(file);
-            setProductImage(imageUrl);
-            setTheProductImage(file);
-        }
+        const preview = URL.createObjectURL(file);
+
+        // Update productImages
+        setProductImages(prev => {
+            const updated = [...prev];
+            updated[index] = file;
+            return updated;
+        });
+        console.log(ProductImages)
+
+        // Update previewImages
+        setPreviewProductImage(prev => {
+            const updated = [...prev];
+            updated[index] = preview;
+            return updated;
+        });
+        console.log(previewProductImage)
     };
 
     const changeSizes = (e)=>{
@@ -71,8 +83,11 @@ const AddProduct = () => {
             formData.append('category', category);
             formData.append('price', price);
             formData.append('sizes', JSON.stringify(sizes))
-            formData.append('image', theProductImage);
-
+            ProductImages.forEach((image) => {
+                if (image) {
+                    formData.append('images', image); // same key for all files
+                }
+  });
         try{
             setLoading(true)
             const response = await axios.post(url, formData)
@@ -125,12 +140,20 @@ const AddProduct = () => {
                         />
                     </div>
                     <div className='add_product_input_container'>
-                        <label>Product Image</label>
-                        <label htmlFor='imageO' className='add_product_image_container'>
-                            <img src={productImage} alt=''/>
-                            <RiImageAddLine className='add_product_image_icon'/>
-                        </label>
-                        <input id='imageO' type='file' hidden onChange={handleFileChange}/>
+                        <label>Product Images</label>
+                        <div className='add_product_images_section'>
+                            {
+                                previewProductImage.map((e, index)=>(
+                                <div key={index} className='add_product_images_body'>
+                                    <label htmlFor={`image-${index}`} className='add_product_image_container'>
+                                        <img src={e} alt=''/>
+                                    </label>
+                                    <RiImageAddLine className='add_product_image_icon'/>
+                                    <input id={`image-${index}`} type='file' hidden onChange={(e)=>handleFileChange(e, index)}/>
+                                </div>
+                                ))
+                            }
+                        </div>
                     </div>
                     <div className='add_product_input_container'>
                         <label>Sizes</label>
