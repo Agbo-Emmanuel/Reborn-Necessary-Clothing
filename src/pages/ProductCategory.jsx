@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './pagesCss/productCategory.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import hero_section_image_two from "../assets/hero_section_image_two.jpg"
+import for_him_image from "../assets/for_him_image.avif"
 import {MainProductCard} from '../components/ProductCard'
 
 
@@ -21,7 +22,8 @@ const ProductCategory = () => {
     ])
 
     const backgroundImages = {
-        "For Her": hero_section_image_two,
+        "women": hero_section_image_two,
+        "men" : for_him_image,
     };
 
     const heroBackgroundImage = backgroundImages[category];
@@ -63,13 +65,13 @@ const ProductCategory = () => {
                         backgroundImage: `linear-gradient(to right, #000000dd, #000000cd), url(${heroBackgroundImage})`,
                     }}
                 >
-                    <h1>{category}</h1>
+                    <h1>{category.toUpperCase()}</h1>
                 </section>
                 <section className='category_article_text_section'>
                     <p>Explore a stunning collection of women's clothing, featuring the latest trends and timeless styles designed to keep you fashionable and confident in every season.</p>
                 </section>
                 <section className='category_article_product_container'>
-                    <MainProductCard width="27%"/>
+                    <MainProductCard width="27%" category={category}/>
                 </section>
             </article>
         </main>

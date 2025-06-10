@@ -127,7 +127,7 @@ export const ProductCard = ({limit, showLastFour, width}) => {
 }
 
 
-export const MainProductCard = ({limit, showLastFour, width,showMessage, setShowMessage})=>{
+export const MainProductCard = ({limit, showLastFour, width,showMessage, setShowMessage, category})=>{
 
     const navigate = useNavigate()
 
@@ -142,7 +142,23 @@ export const MainProductCard = ({limit, showLastFour, width,showMessage, setShow
             const response = await axios.get(url)
             setLoading(false)
             console.log(response)
-            setMainProducts(response.data.allProducts)
+            let products = response.data.allProducts
+
+            // If category is passed, filter
+            if (category) {
+                const filtered = products.filter(
+                    (product) => product.category?.toLowerCase() === category.toLowerCase()
+                )
+
+                if (filtered.length === 0) {
+                    navigate("/not-available")
+                } else {
+                    setMainProducts(filtered)
+                }
+            } else {
+                setMainProducts(products)
+            }
+
         }catch(error){
             setLoading(false)
             console.log(error)
@@ -161,7 +177,7 @@ export const MainProductCard = ({limit, showLastFour, width,showMessage, setShow
         }
 
         getAllProducts()
-    },[])
+    },[category])
 
     return(
         <>

@@ -129,6 +129,7 @@ const AddProduct = () => {
                         <select  value={category} onChange={(e)=>setCategory(e.target.value)}>
                             <option value="">Select category</option>
                             <option value="women">Women</option>
+                            <option value="men">Men</option>
                         </select>
                     </div>
                     <div className='add_product_input_container'>

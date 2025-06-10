@@ -42,7 +42,7 @@ const App = () => {
             <Route path = '/detail/:id' element={<Detail/>} />
             <Route path='/product-category/:category' element={<ProductCategory/>}/>
             <Route path='/designer-mood' element={<NewArrivals/>}/>
-            <Route path='/for-him' element={<ForHimNotAvailable/>}/>
+            <Route path='/not-available' element={<ForHimNotAvailable/>}/>
             <Route path='/cart' element={<Cart/>}/>
             <Route path='/checkout/:orderId' element= {<Checkout/>}/>
             <Route element={<AccountLanding/>}>
