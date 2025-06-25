@@ -84,7 +84,14 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 6px;
+}
+
+.product_card_text_container h3{
+    color: #DEDEDE;
+    font-size: 18px;
+    font-family: "Tenor Sans", serif;
+    font-weight: 500;
 }
 
 .product_card_text_container p{
@@ -99,6 +106,7 @@
     font-size: 17px;
     font-family: "Tenor Sans", serif;
     font-weight: 500;
+    font-style: italic;
 }
 
 
