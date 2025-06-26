@@ -99,14 +99,14 @@
     font-size: 16px;
     font-family: "Tenor Sans", serif;
     font-weight: 400;
+    font-style: italic;
 }
 
 .product_card_text_container h6{
     color: #DD8560;
-    font-size: 17px;
+    font-size: 14px;
     font-family: "Tenor Sans", serif;
     font-weight: 500;
-    font-style: italic;
 }
 
 
