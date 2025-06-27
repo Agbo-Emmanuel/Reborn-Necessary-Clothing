@@ -29,9 +29,9 @@ export const ProductCard = ({limit, showLastFour, width}) => {
         {
             id: 2,
             image: product_image2,
-            name: "21WN reversible angora cardigan",
-            desc: "",
-            tag: "",
+            name: "Runway Couture",
+            desc: "Fierce, artistic, and unapologetically fashion-forward  Runway Couture is a head-turning ensemble that fuses structured elegance with dramatic volume. Designed for the woman who walks like she owns the catwalk, unique, fearless in her confidence, and glowing in her happy expression.",
+            tag: "Own your moment. Live the runway.",
         },
         {
             id: 3,
@@ -43,9 +43,9 @@ export const ProductCard = ({limit, showLastFour, width}) => {
         {
             id: 4,
             image: product_image4,
-            name: "21WN reversible angora cardigan",
-            desc: "",
-            tag: "",
+            name: "Lace Reverie",
+            desc: "A graceful vision in sheer black lace and soft nude undertones, Lace Reverie is a dream brought to life. Made for the woman who is unique, moves with quiet confidence, and glows with gentle happy elegance.",
+            tag: "Delicate, daring, and beautifully you.",
         },
         {
             id: 5,
@@ -71,9 +71,9 @@ export const ProductCard = ({limit, showLastFour, width}) => {
         {
             id: 8,
             image: product_image8,
-            name: "21WN reversible angora cardigan",
-            desc: "",
-            tag: "",
+            name: "Afro Print",
+            desc: "A celebration of heritage with a modern twist, Afro Print is a vibrant, flowing kaftan for the bold soul.  For the woman who is unique, shines with confidence, and chooses happy every time",
+            tag: "Elevate your roots. Radiate your joy.",
         },
         {
             id: 9,
