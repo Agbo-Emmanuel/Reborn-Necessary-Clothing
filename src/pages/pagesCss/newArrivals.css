@@ -1,42 +1,43 @@
-.new_arrivals_body{
-    width: 100%;
+.new_arrivals_body {
+  width: 100%;
 }
 
-.new_arrivals_hero_section{
-    width: 100%;
-    background: linear-gradient(to right, #0000007f, #000000b8), url('../../assets/new_arrival_hero_image.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    padding: 150px 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
+.new_arrivals_hero_section {
+  width: 100%;
+  background: linear-gradient(to right, #0000007f, #000000b8),
+    url("../../assets/new_arrival_hero_image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 150px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
 }
 
-.new_arrivals_hero_section h1{
-    width: max-content;
-    color: #fff;
-    font-size: 50px;
-    font-family: "Bodoni Moda", serif;
-    font-weight: 500;
-    letter-spacing: 6px;
-    word-spacing: 4px;
-    position: relative;
-    padding-bottom: 10px;
-    /* background-color: red; */
+.new_arrivals_hero_section h1 {
+  width: max-content;
+  color: #fff;
+  font-size: 50px;
+  font-family: "Bodoni Moda", serif;
+  font-weight: 500;
+  letter-spacing: 6px;
+  word-spacing: 4px;
+  position: relative;
+  padding-bottom: 10px;
+  /* background-color: red; */
 }
 
-.new_arrivals_hero_section h1:before{
-    content: '';
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 80px;
-    height: 4px;
-    background-color: #40BFFF;
+.new_arrivals_hero_section h1:before {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 80px;
+  height: 4px;
+  background-color: #40bfff;
 }
 
 /* .new_arrivals_hero_section h1:after{
@@ -49,77 +50,161 @@
     background-color: #fff;
 } */
 
-.new_arrivals_hero_section p{
-    color: #fff;
-    font-size: 18px;
-    font-family: "Lato", sans-serif;
-    font-weight: 500;
-    letter-spacing: 2px;
-    word-spacing: 2px;
-    text-align: center;
+.new_arrivals_hero_section p {
+  color: #fff;
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  text-align: center;
 }
 
-.new_arrivals_items_container{
-    width: 100%;
-    padding: 0px 80px;
-    margin: 50px 0px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
+.new_arrivals_items_container {
+  width: 100%;
+  padding: 0px 80px;
+  margin: 50px 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
-
-@media screen and (max-width: 900px){
-    .new_arrivals_hero_section{
-        padding: 150px 16px;
-        gap: 20px;
-    }
-
-    .new_arrivals_hero_section h1{
-        font-size: 50px;
-    }
-
-    .new_arrivals_hero_section p{
-        font-size: 28px;
-        line-height: 26px;
-    }
-
-    .new_arrivals_hero_section h1:before{
-        right: -30px;
-        width: 100px;
-    }
-
-    .new_arrivals_items_container{
-        padding: 0px 16px;
-        gap: 0px;
-    }
+.request_price_form_body {
+  width: 100%;
+  min-height: 100vh;
+  backdrop-filter: blur(8px); /* 👈 apply blur */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  background: rgba(0, 0, 0, 0.3); /* 👈 semi-transparent overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.request_price_form {
+  width: 40%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
 
+.request_price_form h2 {
+  color: #000;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
 
+.request_price_form_input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
+.request_price_form_input label {
+  color: #000;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+}
 
-@media screen and (max-width: 768px){
-    .new_arrivals_hero_section{
-        padding: 150px 16px;
-        gap: 20px;
-    }
+.request_price_form_input input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  padding: 10px;
+}
 
-    .new_arrivals_hero_section h1{
-        font-size: 30px;
-    }
+.request_price_form_submit_btn {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: blue;
+  color: #fff;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 10px;
+}
 
-    .new_arrivals_hero_section p{
-        font-size: 16px;
-        line-height: 26px;
-    }
+.request_price_form_close_btn {
+  width: max-content;
+  padding: 6px 10px;
+  color: #000;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  outline: none;
+  background: none;
+}
 
-    .new_arrivals_hero_section h1:before{
-        right: -30px;
-        width: 40px;
-    }
+@media screen and (max-width: 900px) {
+  .new_arrivals_hero_section {
+    padding: 150px 16px;
+    gap: 20px;
+  }
 
-    .new_arrivals_items_container{
-        padding: 0px 46px;
-    }
+  .new_arrivals_hero_section h1 {
+    font-size: 50px;
+  }
+
+  .new_arrivals_hero_section p {
+    font-size: 28px;
+    line-height: 26px;
+  }
+
+  .new_arrivals_hero_section h1:before {
+    right: -30px;
+    width: 100px;
+  }
+
+  .new_arrivals_items_container {
+    padding: 0px 16px;
+    gap: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .new_arrivals_hero_section {
+    padding: 150px 16px;
+    gap: 20px;
+  }
+
+  .new_arrivals_hero_section h1 {
+    font-size: 30px;
+  }
+
+  .new_arrivals_hero_section p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .new_arrivals_hero_section h1:before {
+    right: -30px;
+    width: 40px;
+  }
+
+  .new_arrivals_items_container {
+    padding: 0px 46px;
+  }
 }
