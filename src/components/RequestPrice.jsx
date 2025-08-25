@@ -52,7 +52,7 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
       Swal.fire({
         icon: "info",
         title: "We’ve Got Your Request",
-        text: "Thank you for filling your information and submitting it to us, we will get back to you in the next 24-48hrs.",
+        text: "The custom made Price for this item will be sent to you via mail/ Sms to your phone number",
         // draggable: true,
       });
       console.log(response);
