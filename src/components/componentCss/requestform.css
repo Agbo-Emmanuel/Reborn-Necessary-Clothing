@@ -15,7 +15,7 @@
 
 .request_price_form {
   width: 40%;
-  background-color: #fff;
+  background-color: #000;
   border-radius: 6px;
   padding: 20px;
   display: flex;
@@ -23,13 +23,22 @@
   align-items: center;
   gap: 10px;
   position: relative;
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.25),
+    0 2px 6px rgba(0, 123, 255, 0.2);
 }
 
 .request_price_form h2 {
-  color: #000;
+  color: #fff;
   font-size: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+}
+
+.request_price_form p {
+  color: #fff;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
   margin-bottom: 20px;
 }
 
@@ -41,7 +50,7 @@
 }
 
 .request_price_form_input label {
-  color: #000;
+  color: #fff;
   font-size: 16px;
   font-family: "Inter", sans-serif;
 }
@@ -73,7 +82,7 @@
 .request_price_form_close_btn {
   width: max-content;
   padding: 6px 10px;
-  color: #000;
+  color: #fff;
   font-size: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -102,6 +111,11 @@
   background-color: transparent;
   cursor: pointer;
   outline: none;
+  color: #fff;
+}
+
+.phone_input_container select option {
+  color: #000;
 }
 
 .country_code {
@@ -113,8 +127,9 @@
   flex: 1;
   height: 100%;
   outline: none;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   padding: 10px;
   border: none;
   background-color: transparent;
+  color: #fff;
 }

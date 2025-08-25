@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./componentCss/requestform.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const RequestPrice = ({ setShowRequestPriceForm }) => {
   const [showMessage, setShowMessage] = useState(false);
@@ -29,6 +30,7 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
 
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState({
+    name: "",
     email: "",
     phone: "",
     countryCode: "+234",
@@ -47,12 +49,18 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
       const response = await axios.post(url, body);
       setLoading(false);
       setShowRequestPriceForm(false);
+      Swal.fire({
+        icon: "info",
+        title: "We’ve Got Your Request",
+        text: "Thank you for filling your information and submitting it to us, we will get back to you in the next 24-48hrs.",
+        // draggable: true,
+      });
       console.log(response);
-      setShowMessage(!showMessage);
-      localStorage.setItem(
-        "message",
-        JSON.stringify({ type: "success", value: response.data.message })
-      );
+      // setShowMessage(!showMessage);
+      // localStorage.setItem(
+      //   "message",
+      //   JSON.stringify({ type: "success", value: response.data.message })
+      // );
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -102,6 +110,17 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
             X
           </button>
           <h2>Request Price</h2>
+          <p>Please Fill this information to get price for product.</p>
+          <div className="request_price_form_input">
+            <label>Name</label>
+            <input
+              type="text"
+              required
+              name="name"
+              value={value.name}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
           <div className="request_price_form_input">
             <label>Email</label>
             <input
@@ -113,7 +132,7 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
             />
           </div>
           <div className="request_price_form_input">
-            <label>WhatsApp Phone Number</label>
+            <label>Phone Number</label>
             <div className="phone_input_container">
               {/* Country selector */}
               <select
@@ -125,7 +144,41 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
                 <option value="+1">USA</option>
                 <option value="+44">UK</option>
                 <option value="+233">Ghana</option>
-                {/* add more as needed */}
+                <option value="+91">India</option>
+                <option value="+61">Australia</option>
+                <option value="+49">Germany</option>
+                <option value="+33">France</option>
+                <option value="+39">Italy</option>
+                <option value="+34">Spain</option>
+                <option value="+81">Japan</option>
+                <option value="+86">China</option>
+                <option value="+82">South Korea</option>
+                <option value="+55">Brazil</option>
+                <option value="+52">Mexico</option>
+                <option value="+27">South Africa</option>
+                <option value="+20">Egypt</option>
+                <option value="+90">Turkey</option>
+                <option value="+62">Indonesia</option>
+                <option value="+47">Norway</option>
+                <option value="+46">Sweden</option>
+                <option value="+45">Denmark</option>
+                <option value="+358">Finland</option>
+                <option value="+31">Netherlands</option>
+                <option value="+41">Switzerland</option>
+                <option value="+43">Austria</option>
+                <option value="+32">Belgium</option>
+                <option value="+48">Poland</option>
+                <option value="+420">Czech Republic</option>
+                <option value="+36">Hungary</option>
+                <option value="+40">Romania</option>
+                <option value="+30">Greece</option>
+                <option value="+98">Iran</option>
+                <option value="+92">Pakistan</option>
+                <option value="+94">Sri Lanka</option>
+                <option value="+63">Philippines</option>
+                <option value="+65">Singapore</option>
+                <option value="+60">Malaysia</option>
+                <option value="+66">Thailand</option>
               </select>
 
               {/* Country code (based on selected country) */}

@@ -142,14 +142,14 @@ const AddProduct = () => {
                 <option value="men">Men</option>
               </select>
             </div>
-            <div className="add_product_input_container">
+            {/* <div className="add_product_input_container">
               <label>Price</label>
               <input
                 type="text"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="add_product_input_container">
               <label>Type</label>
               <input
