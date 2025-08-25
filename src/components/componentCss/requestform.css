@@ -1,0 +1,120 @@
+.request_price_form_body {
+  width: 100%;
+  min-height: 100vh;
+  backdrop-filter: blur(8px); /* 👈 apply blur */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  background: rgba(0, 0, 0, 0.3); /* 👈 semi-transparent overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.request_price_form {
+  width: 40%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.request_price_form h2 {
+  color: #000;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.request_price_form_input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.request_price_form_input label {
+  color: #000;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+}
+
+.request_price_form_input input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.request_price_form_submit_btn {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: blue;
+  color: #fff;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.request_price_form_close_btn {
+  width: max-content;
+  padding: 6px 10px;
+  color: #000;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.phone_input_container {
+  width: 100%;
+  display: flex;
+  height: 45px;
+  align-items: center;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+}
+
+.phone_input_container select {
+  padding: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.country_code {
+  padding: 8px 12px;
+  background-color: rgb(235, 235, 235);
+}
+
+.phone_input_container input {
+  flex: 1;
+  height: 100%;
+  outline: none;
+  border-radius: 4px;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}

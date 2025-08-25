@@ -249,7 +249,7 @@ export const MainProductCard = ({
               key={e._id}
               className="product_card_body"
               style={width ? { width: width } : null}
-              onClick={() => navigate(`/detail/${e._id}`)}
+              // onClick={() => navigate(`/detail/${e._id}`)}
             >
               <div className="product_card_image_container">
                 <img src={e.images[0]} alt="" />
@@ -259,10 +259,8 @@ export const MainProductCard = ({
                 <h6>
                   {e.type} #{codes[e._id]}
                 </h6>
-                <button
-                // onClick={() => setShowRequestPriceForm(true)}
-                >
-                  Pre-Order
+                <button onClick={() => setShowRequestPriceForm(true)}>
+                  Request Price
                 </button>
               </div>
             </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./pagesCss/newArrivals.css";
 import { MainProductCard } from "../components/ProductCard";
 import Messagify from "../components/Messagify";
+import RequestPrice from "../components/RequestPrice";
 
 const NewArrivals = () => {
   const [showMessage, setShowMessage] = useState(false);
@@ -45,30 +46,9 @@ const NewArrivals = () => {
             setShowMessage={setShowMessage}
             setShowRequestPriceForm={setShowRequestPriceForm}
           />
-          {/* {showRequestPriceForm && (
-            <div className="request_price_form_body">
-              <form className="request_price_form">
-                <button
-                  className="request_price_form_close_btn"
-                  onClick={() => setShowRequestPriceForm(false)}
-                >
-                  X
-                </button>
-                <h2>Request Price</h2>
-                <div className="request_price_form_input">
-                  <label>Email</label>
-                  <input type="email" required />
-                </div>
-                <div className="request_price_form_input">
-                  <label>Watsapp Phone Number</label>
-                  <input type="number" required />
-                </div>
-                <button className="request_price_form_submit_btn" type="submit">
-                  Submit
-                </button>
-              </form>
-            </div>
-          )} */}
+          {showRequestPriceForm && (
+            <RequestPrice setShowRequestPriceForm={setShowRequestPriceForm} />
+          )}
         </section>
       </main>
     </>
