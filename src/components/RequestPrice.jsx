@@ -32,6 +32,7 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
   const [value, setValue] = useState({
     name: "",
     email: "",
+    reconfirmEmail: "",
     phone: "",
     countryCode: "+234",
   });
@@ -41,6 +42,7 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
     try {
       setLoading(true);
       const body = {
+        name: value.name,
         email: value.email,
         phone: value.countryCode + value.phone,
       };
@@ -128,6 +130,16 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
               required
               name="email"
               value={value.email}
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <div className="request_price_form_input">
+            <label>Reconfirm-Email</label>
+            <input
+              type="text"
+              required
+              name="reconfirmEmail"
+              value={value.reconfirmEmail}
               onChange={(e) => handleChange(e)}
             />
           </div>
