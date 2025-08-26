@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const PriceRequests = () => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState("false");
   const [priceRequests, setPriceRequests] = useState([]);
   const [userLoading, setUserLoading] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
@@ -20,7 +20,7 @@ const PriceRequests = () => {
     const handleStorageChange = () => {
       const storedMessage = localStorage.getItem("message");
       if (storedMessage) {
-        setMessage(JSON.parse(storedMessag));
+        setMessage(JSON.parse(storedMessage));
       } else {
         setMessage(null);
       }
@@ -76,7 +76,46 @@ const PriceRequests = () => {
     getUser();
   }, []);
 
-  const deleteRequest = () => {};
+  const deleteRequest = async (index) => {
+    const url =
+      "https://reborn-necessary-clothing-backend.onrender.com/api/products/delete-request-price";
+    const body = { index };
+    try {
+      setLoading(index);
+      const response = await axios.post(url, body);
+      setLoading("false");
+      console.log(response);
+      setShowMessage(!showMessage);
+      localStorage.setItem(
+        "message",
+        JSON.stringify({ type: "success", value: response.data.message })
+      );
+      navigate("/dashboard");
+    } catch (error) {
+      setLoading("false");
+      console.log(error);
+      if (error.message == "Network Error") {
+        setShowMessage(!showMessage);
+        localStorage.setItem(
+          "message",
+          JSON.stringify({
+            type: "error",
+            value: "Network Error, please check your internet connection",
+          })
+        );
+      } else if (error.response?.data?.message == "jwt expired") {
+        setShowMessage(!showMessage);
+        localStorage.setItem(
+          "message",
+          JSON.stringify({
+            type: "error",
+            value: "Your session has expired. Please log in again.",
+          })
+        );
+        navigate("/login");
+      }
+    }
+  };
 
   return (
     <>
@@ -84,7 +123,7 @@ const PriceRequests = () => {
         message == null ? null : <Messagify type={message.type} message={message.value}/>
       } */}
       <main className="manage_users_body">
-        <h3>Users:</h3>
+        <h3>Price Requests:</h3>
         {userLoading ? <p>retrieving users...</p> : null}
         <section className="manage_users_table_section">
           <table>
@@ -105,8 +144,8 @@ const PriceRequests = () => {
                   <td>{e.email}</td>
                   <td>{e.phone}</td>
                   <td>
-                    <button onClick={() => deleteRequest(e.index)}>
-                      {loading == e.index ? (
+                    <button onClick={() => deleteRequest(index)}>
+                      {loading == index ? (
                         <LiaSpinnerSolid className="td_button_icon" />
                       ) : (
                         "delete"
