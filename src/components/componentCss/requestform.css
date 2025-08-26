@@ -133,3 +133,9 @@
   background-color: transparent;
   color: #fff;
 }
+
+@media screen and (max-width: 768px) {
+  .request_price_form {
+    width: 98%;
+  }
+}
