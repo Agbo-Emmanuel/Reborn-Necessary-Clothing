@@ -54,7 +54,7 @@ const RequestPrice = ({ setShowRequestPriceForm }) => {
       Swal.fire({
         icon: "info",
         title: "We’ve Got Your Request",
-        text: "The custom made Price for this item will be sent to you via mail/ Sms to your phone number",
+        text: "The tailored price for this exclusive creation will be communicated to you by email or sms. Please verify your email address and your phone number.",
         // draggable: true,
       });
       console.log(response);
