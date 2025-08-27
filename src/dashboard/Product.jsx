@@ -145,7 +145,7 @@ const Product = () => {
                   </div>
                   <div className="product_item_card_top_text_container">
                     <h3>{e.productName}</h3>
-                    <p>${e.price}</p>
+                    <p>${/*{e.price}*/}</p> 
                   </div>
                 </div>
                 <div
