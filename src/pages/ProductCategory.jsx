@@ -14,11 +14,11 @@ const ProductCategory = () => {
     const [priceValue, setPriceValue] = useState(0)
 
     const [categories, SetCategories] = useState([
-        { category: 'Nike', no: '3' },
-        { category: 'Airmax', no: '48' },
-        { category: 'Adidas', no: '18' },
-        { category: 'Vans', no: '18' },
-        { category: 'All Stars', no: '18' },
+        { category: 'Designer Mood', no: '3' },
+        { category: 'For Her', no: '48' },
+        { category: 'For Him', no: '10' },
+        { category: 'Accessories', no: '0' },
+       /* { category: 'All Stars', no: '18' },*/
     ])
 
     const backgroundImages = {
@@ -68,7 +68,8 @@ const ProductCategory = () => {
                     <h1>{category.toUpperCase()}</h1>
                 </section>
                 <section className='category_article_text_section'>
-                    <p>Explore a stunning collection of women's clothing, featuring the latest trends and timeless styles designed to keep you fashionable and confident in every season.</p>
+                    <p>Step into a world of style with our curated collection of women’s clothing, where modern trends meet timeless elegance. From effortless everyday looks to standout pieces for special moments, 
+                    every design is crafted to embody Confidence, Happiness, and Big Energy in every season.</p>
                 </section>
                 <section className='category_article_product_container'>
                     <MainProductCard width="27%" category={category}/>

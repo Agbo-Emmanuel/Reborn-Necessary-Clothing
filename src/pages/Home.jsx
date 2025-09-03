@@ -250,23 +250,23 @@ const Home = () => {
           </div>
         </div>
         <div className='section_five'>
-          <p>Making a luxurious lifestyle accessible for a generous group of women is our daily drive.</p>
+          <p> Accessible Luxury. Luxury, designed for women with bold energy.</p>
           <div className='section_five_middle_container'>
             <div className='section_five_middle_item_container'>
               <img src={miroodles_sticker} alt=''/>
-              <p>Fast shipping. Free on orders over $25.</p>
+              <p>Fast & Free Delivery. Quick Shipping, Free on orders $25+.</p>
             </div>
             <div className='section_five_middle_item_container'>
               <img src={miroodles_sticker2} alt=''/>
-              <p>Sustainable process from start to finish.</p>
+              <p>Concious Craft. Fashion with purpose, from start to finish.</p>
             </div>
             <div className='section_five_middle_item_container'>
               <img src={miroodles_sticker3} alt=''/>
-              <p>Unique designs and high-quality materials.</p>
+              <p>Distinctly You. Unique designs. Premium quality.</p>
             </div>
             <div className='section_five_middle_item_container'>
               <img src={miroodles_sticker4} alt=''/>
-              <p>Fast shipping. Free on orders over $25.</p>
+              <p>Effortless Style Chic fashion that moves with you.</p>
             </div>
           </div>
           <div className='section_five_bottom_container'>

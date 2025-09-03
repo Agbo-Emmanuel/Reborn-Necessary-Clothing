@@ -77,7 +77,7 @@ export const ProductCard = ({ limit, showLastFour, width }) => {
     {
       id: 9,
       image: product_image9,
-      name: "21WN reversible angora cardigan",
+      name: "Switch & Style Angora",
       desc: "",
       tag: "",
     },
