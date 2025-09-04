@@ -39,7 +39,7 @@ const ProductCategory = () => {
   return (
     <>
       <main className="product_category_body">
-        <aside className="product_category_aside">
+        {/* <aside className="product_category_aside">
           <section className="aside_category_container">
             <h2>Hot Deals</h2>
             {categories.map((item, index) => (
@@ -63,7 +63,7 @@ const ProductCategory = () => {
               </div>
             </div>
           </section>
-        </aside>
+        </aside> */}
         <article className="product_category_article">
           <section
             className="category_article_hero_section"
