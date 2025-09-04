@@ -179,6 +179,7 @@ const Header = () => {
             For Him
           </Link>
           <Link
+            to="/product-category/accessories"
             onClick={() => setShowMenu(false)}
             className="mobile_header_nav"
           >
