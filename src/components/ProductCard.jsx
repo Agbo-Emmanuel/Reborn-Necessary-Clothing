@@ -75,34 +75,6 @@ export const ProductCard = ({ limit, showLastFour, width }) => {
       desc: "A celebration of heritage with a modern twist, Afro Print is a vibrant, flowing kaftan for the bold soul.  For the woman who is unique, shines with confidence, and chooses happy every time",
       tag: "Elevate your roots. Radiate your joy.",
     },
-    {
-      id: 10,
-      image: product_image10,
-      name: "Switch & Style Angora",
-      desc: "",
-      tag: "",
-    },
-    {
-      id: 11,
-      image: product_image11,
-      name: "The Power Glow",
-      desc: "",
-      tag: "",
-    },
-    {
-      id: 12,
-      image: product_image12,
-      name: "Twist & Luxe Angora",
-      desc: "",
-      tag: "",
-    },
-    {
-      id: 13,
-      image: product_image13,
-      name: "Zuri Blouse",
-      desc: "",
-      tag: "",
-    },
   ];
 
   const productsToDisplay = showLastFour

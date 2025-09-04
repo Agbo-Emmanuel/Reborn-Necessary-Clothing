@@ -1,5 +1,10 @@
 import { useEffect, useState, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 import "./pagesCss/home.css";
+import "../components/componentCss/productCard.css";
 import { ProductCard } from "../components/ProductCard";
 import hero_section_image_one from "../assets/hero_section_image_one.jpg";
 import hero_section_image_five from "../assets/hero_section_image_five.jpg";
@@ -14,6 +19,10 @@ import section_five_bottom_image from "../assets/section_five_bottom_image.png";
 import rbnc_logo from "../assets/rbnc_logo.png";
 import { useNavigate } from "react-router-dom";
 import Messagify from "../components/Messagify";
+import product_image10 from "../assets/product_image10.jpg";
+import product_image11 from "../assets/product_image11.jpg";
+import product_image12 from "../assets/product_image12.png";
+import product_image13 from "../assets/product_image13.jpg";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -155,6 +164,33 @@ const Home = () => {
     }
   };
 
+  const bottomProduct = [
+    {
+      image: product_image10,
+      name: "Switch & Style Angora",
+      desc: "",
+      tag: "",
+    },
+    {
+      image: product_image11,
+      name: "The Power Glow",
+      desc: "",
+      tag: "",
+    },
+    {
+      image: product_image12,
+      name: "Twist & Luxe Angora",
+      desc: "",
+      tag: "",
+    },
+    {
+      image: product_image13,
+      name: "Zuri Blouse",
+      desc: "",
+      tag: "",
+    },
+  ];
+
   return (
     <>
       {message == null ? null : (
@@ -246,7 +282,32 @@ const Home = () => {
         <div className="section_four">
           <h3>JUST FOR YOU</h3>
           <div className="section_four_product_container">
-            <ProductCard showLastFour={true} />
+            <Swiper
+              modules={[Navigation]}
+              navigation
+              spaceBetween={20}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 4 },
+              }}
+            >
+              {bottomProduct.map((e) => (
+                <SwiperSlide key={e.id}>
+                  <div className="carousel_card">
+                    <div className="carousel_card_image">
+                      <img src={e.image} alt={e.name} />
+                    </div>
+                    <div className="carousel_card_content">
+                      <h3 className="carousel_card_title">{e.name}</h3>
+                      {/* <p className="carousel_card_desc">{e.desc}</p>
+        <h6 className="carousel_card_tag">{e.tag}</h6> */}
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
         <div className="section_five">

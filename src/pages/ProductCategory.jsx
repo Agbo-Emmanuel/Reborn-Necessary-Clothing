@@ -3,6 +3,7 @@ import "./pagesCss/productCategory.css";
 import { useNavigate, useParams } from "react-router-dom";
 import hero_section_image_two from "../assets/hero_section_image_two.jpg";
 import for_him_image from "../assets/for_him_image.avif";
+import accessories_background from "../assets/accessories_background.jpg";
 import { MainProductCard } from "../components/ProductCard";
 
 const ProductCategory = () => {
@@ -22,7 +23,7 @@ const ProductCategory = () => {
   const backgroundImages = {
     women: hero_section_image_two,
     men: for_him_image,
-    accessories: for_him_image,
+    accessories: accessories_background,
   };
 
   const text = {
