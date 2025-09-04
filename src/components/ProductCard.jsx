@@ -15,6 +15,7 @@ import product_image12 from "../assets/product_image12.png";
 import product_image13 from "../assets/product_image13.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import RequestPrice from "./RequestPrice";
 
 export const ProductCard = ({ limit, showLastFour, width }) => {
   const products = [
@@ -75,37 +76,30 @@ export const ProductCard = ({ limit, showLastFour, width }) => {
       tag: "Elevate your roots. Radiate your joy.",
     },
     {
-      id: 9,
-      image: product_image9,
-      name: "Switch & Style Angora",
-      desc: "",
-      tag: "",
-    },
-    {
       id: 10,
       image: product_image10,
-      name: "21WN reversible angora cardigan",
+      name: "Switch & Style Angora",
       desc: "",
       tag: "",
     },
     {
       id: 11,
       image: product_image11,
-      name: "21WN reversible angora cardigan",
+      name: "The Power Glow",
       desc: "",
       tag: "",
     },
     {
       id: 12,
       image: product_image12,
-      name: "21WN reversible angora cardigan",
+      name: "Twist & Luxe Angora",
       desc: "",
       tag: "",
     },
     {
       id: 13,
       image: product_image13,
-      name: "21WN reversible angora cardigan",
+      name: "Zuri Blouse",
       desc: "",
       tag: "",
     },
@@ -131,7 +125,7 @@ export const ProductCard = ({ limit, showLastFour, width }) => {
           <div className="product_card_text_container">
             <h3>{e.name}</h3>
             <p>{e.desc}</p>
-            <h6>#{e.tag}</h6>
+            <h6>{e.tag}</h6>
           </div>
         </div>
       ))}
@@ -146,13 +140,14 @@ export const MainProductCard = ({
   showMessage,
   setShowMessage,
   category,
-  setShowRequestPriceForm,
+  // setShowRequestPriceForm,
 }) => {
   const navigate = useNavigate();
 
   const [mainProducts, setMainProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [codes, setCodes] = useState({});
+  const [showRequestPriceForm, setShowRequestPriceForm] = useState(false);
 
   useEffect(() => {
     const getAllProducts = async () => {
@@ -263,6 +258,11 @@ export const MainProductCard = ({
                   Request Price
                 </button>
               </div>
+              {showRequestPriceForm && (
+                <RequestPrice
+                  setShowRequestPriceForm={setShowRequestPriceForm}
+                />
+              )}
             </div>
           </>
         ))

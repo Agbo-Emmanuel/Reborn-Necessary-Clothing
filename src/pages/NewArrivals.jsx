@@ -10,7 +10,7 @@ const NewArrivals = () => {
     const storedMessage = localStorage.getItem("message");
     return storedMessage ? JSON.parse(storedMessage) : null;
   });
-  const [showRequestPriceForm, setShowRequestPriceForm] = useState(false);
+  // const [showRequestPriceForm, setShowRequestPriceForm] = useState(false);
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -44,11 +44,11 @@ const NewArrivals = () => {
           <MainProductCard
             showMessage={showMessage}
             setShowMessage={setShowMessage}
-            setShowRequestPriceForm={setShowRequestPriceForm}
+            // setShowRequestPriceForm={setShowRequestPriceForm}
           />
-          {showRequestPriceForm && (
+          {/* {showRequestPriceForm && (
             <RequestPrice setShowRequestPriceForm={setShowRequestPriceForm} />
-          )}
+          )} */}
         </section>
       </main>
     </>
