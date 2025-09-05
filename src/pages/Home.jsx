@@ -314,8 +314,7 @@ const Home = () => {
           <p>
             {" "}
             <strong><h3>Accessible Luxury.</h3></strong> <br/>
-            <br/>
-            Luxury, designed for women with bold energy.
+            <h6>Luxury, designed for women with bold energy.</h6>
           </p>
           <div className="section_five_middle_container">
             <div className="section_five_middle_item_container">
