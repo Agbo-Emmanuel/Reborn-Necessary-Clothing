@@ -4,7 +4,7 @@
     padding: 0px 16px;
     background: 
         linear-gradient(rgba(0, 0, 0, 0.871) 50%, rgba(0, 0, 0, 0.871) 50%), 
-        url("../../assets/for_him_image.avif");
+        url("../../assets/accessories_background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -32,6 +32,27 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+.for_him_not_available_body h2{
+    color: #fff;
+    font-size: 60px;
+    font-family: "Bodoni Moda", serif;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(270deg, rgb(247, 59, 59), rgb(157, 141, 130), rgb(232, 106, 106));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 3s infinite linear;
+}
+
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 
 
 @media screen and (max-width: 768px){
