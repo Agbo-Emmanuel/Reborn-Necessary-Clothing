@@ -313,7 +313,7 @@ const Home = () => {
         <div className="section_five">
           <p>
             {" "}
-            <strong><h3>Accessible Luxury.</h3></strong> <br/><h5>Luxury, designed for women with bold energy.</h5>
+            <strong><h3>Accessible Luxury.</h3></strong> <br/><h5>"Luxury, designed for women with bold energy."</h5>
           </p>
           <div className="section_five_middle_container">
             <div className="section_five_middle_item_container">
