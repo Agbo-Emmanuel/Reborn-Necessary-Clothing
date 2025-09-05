@@ -313,12 +313,13 @@ const Home = () => {
         <div className="section_five">
           <p>
             {" "}
-            Accessible Luxury. Luxury, designed for women with bold energy.
+            <strong>Accessible Luxury.</strong> <br/>
+            Luxury, designed for women with bold energy.
           </p>
           <div className="section_five_middle_container">
             <div className="section_five_middle_item_container">
               <img src={miroodles_sticker} alt="" />
-              <p>Fast & Free Delivery. Quick Shipping, Free on orders $25+.</p>
+              <p>Swift, Secure Shipping You Can Count On, Every Time.</p>
             </div>
             <div className="section_five_middle_item_container">
               <img src={miroodles_sticker2} alt="" />
