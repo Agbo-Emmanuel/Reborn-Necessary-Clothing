@@ -11,9 +11,14 @@ const Footer = () => {
     <>
       <div className="footer_body">
         <div className="footer_link_container">
-          <FaXTwitter className="footer_media_icon" />
+         {/*} <FaXTwitter className="footer_media_icon" />*/}
+         <a 
+         href="https://www.instagram.com/p/DKVPmyMyWO6/?igsh=a29rbW5vejZkZXM4"
+         target="_blank"
+         rel="noopener noreferrer">
           <AiFillInstagram className="footer_media_icon" />
-          <FaYoutube className="footer_media_icon" />
+          </a>
+          {/*<FaYoutube className="footer_media_icon" />*/}
           <Link to="/designer-mood" className="footer_nav">
             Designer Mood
           </Link>
